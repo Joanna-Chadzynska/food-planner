@@ -1,12 +1,27 @@
-* {
-	margin: 0;
-	padding: 0;
-	box-sizing: border-box;
-}
+@import './abstracts/variables';
+@import './abstracts/functions';
+@import './abstracts/mixins';
+
+@import './base/reset';
+@import './base/typography';
 
 body {
+	background-image: url('../assets//bg.png');
+	background-size: cover;
 	font-family: sans-serif;
 }
 
+@import './layout/navigation';
+@import './layout/grid';
+@import './layout/header';
+@import './layout/footer';
+@import './layout/sidebar';
+@import './layout/forms';
+
 @import './components/header';
 @import './components/intro';
+
+@import './pages/home';
+@import './pages/signin-up';
+@import './pages/contact';
+@import './pages/notFound';

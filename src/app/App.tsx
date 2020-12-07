@@ -1,19 +1,17 @@
+import { Logo } from 'components';
 import React from 'react';
-import './App.css';
 
 const App = () => {
 	return (
 		<>
-			<header>
-				<img
-					src='https://coderslab.pl/img/coderslab-logo.png'
-					className='logoImage'
-					alt='logo'
-				/>
-			</header>
-			<section className='intro'>
+			{/* <Header>
+				<img src='https://coderslab.pl/img/coderslab-logo.png' alt='logo' />
+			</Header> */}
+
+			<Logo />
+			{/* <Intro>
 				<p>Scrum Lab React</p>
-			</section>
+			</Intro> */}
 		</>
 	);
 };
