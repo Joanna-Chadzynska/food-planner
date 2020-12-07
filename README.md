@@ -1,44 +1,105 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app), using the [Redux](https://redux.js.org/) and [Redux Toolkit](https://redux-toolkit.js.org/) template.
+# ScrumLab React
 
-## Available Scripts
+To repozytorium jest poświęcone projektowi ScrumLab w wersji Reactowej.
 
-In the project directory, you can run:
+## Jak zacząć?
 
-### `yarn start`
+Aby rozpocząć pracę nad projektem, należy:
 
-Runs the app in the development mode.<br />
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+- `clone` - sklonować to repoztorium
+- `npm install` - zainstalować wszystkie niezbędne zależności
 
-The page will reload if you make edits.<br />
-You will also see any lint errors in the console.
+Projekt jest oparty o konfigurację _Create React App_.
 
-### `yarn test`
+## Development i Budowanie
 
-Launches the test runner in the interactive watch mode.<br />
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+Aby uruchomić serwer deweloperski przy pracy nad projektem, trzeba uruchomić komendę `npm start`.
 
-### `yarn build`
+Budowanie projektu to komenda `npm run build`. Z tej komendy korzystamy tylko wtedy kiedy chcemy wygenerować folder `build` ze skompilowaną i produkcyjną wersją naszej aplikacji.
 
-Builds the app for production to the `build` folder.<br />
-It correctly bundles React in production mode and optimizes the build for the best performance.
+Więcej o komendach CRA możecie przeczytać tutaj: [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
 
-The build is minified and the filenames include the hashes.<br />
-Your app is ready to be deployed!
+## REST API
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+W ramach projektu ScrumLab przygotowano podstawową strukturę bazy danych `json-server`. Plik zawierający wszystkie dane znajduje się w folderze `database` pod nazwą `db.json`.
 
-### `yarn eject`
+Uruchamiamy serwer za pomocą `npm run api` w osobnej karcie terminala. Serwer powinien zostać uruchomiony na porcie `3000`: http://localhost:3000.
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+Operacje które możemy wykonywać na bazie:
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+### Użytkownik
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+```json
+{
+	"user": {
+		"name": ""
+	}
+}
+```
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+| Zasób   | Metoda  | Dane                  | Opis                                                       |
+| ------- | ------- | --------------------- | ---------------------------------------------------------- |
+| `/user` | `GET`   | -                     | Pobranie obiektu `user` w którym znajduje się klucz `name` |
+| `/user` | `PATCH` | `{ "name": "Tomek" }` | Zaktualizowanie obiektu `user` o nową wartość `name`       |
 
-## Learn More
+### Przepisy
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+```json
+{
+	"id": 1,
+	"name": "Zupa pomidorowa",
+	"description": "Pyszna zupa pomidorowa z całych pomidorów.",
+	"steps": ["Wlej wodę do garnka"],
+	"ingredients": ["Pomidory"]
+}
+```
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+| Zasób          | Metoda   | Opis                                                                   |
+| -------------- | -------- | ---------------------------------------------------------------------- |
+| `/recipes`     | `GET`    | Pobranie wszystkich przepisów                                          |
+| `/recipes/:id` | `GET`    | Pobranie konkretnego przepisu (pod `:id` wstawiamy ID przepisu)        |
+| `/recipes`     | `POST`   | Wysyłamy obiekt `json` z nazwą, opisem, krokami i składnikami przepisu |
+| `/recipes/:id` | `PATCH`  | Wysyłamy odpowiednie dane w celu edycji istniejącego już przepisu      |
+| `/recipes/:id` | `DELETE` | Usuwamy konkretny przepis z bazy                                       |
+
+### Harmonogramy
+
+```json
+{
+	"id": 1,
+	"name": "Wegetariański tydzień",
+	"description": "Długi opis tygodnia bez mięsa.",
+	"weekNumber": 1,
+	"monday": [1, 2, 3, 4, 5],
+	"tuesday": [1, 2, 3, 4, 5],
+	"wednesday": [1, 2, 3, 4, 5],
+	"thrusday": [1, 2, 3, 4, 5],
+	"friday": [1, 2, 3, 4, 5],
+	"satruday": [1, 2, 3, 4, 5],
+	"sunday": [1, 2, 3, 4, 5]
+}
+```
+
+| Zasób            | Metoda   | Opis                                                                                                                                                                                   |
+| ---------------- | -------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `/schedules`     | `GET`    | Pobranie wszystkich harmonogramów                                                                                                                                                      |
+| `/schedules/:id` | `GET`    | Pobranie konkretnego harmonogramu (pod `:id` wstawiamy ID harmonogramu)                                                                                                                |
+| `/schedules`     | `POST`   | Wysyłamy obiekt `json` z nazwą, opisem, numerem tygodnia i odpowiednich kluczach korespondujących z odpowiednim dniem tygodnia jako tablica 5 ID przepisów (`monday`, `thursday` etc.) |
+| `/schedules/:id` | `PATCH`  | Wysyłamy odpowiednie dane w celu edycji istniejącego już harmonogramu                                                                                                                  |
+| `/schedules/:id` | `DELETE` | Usuwamy konkretny harmonogram z bazy                                                                                                                                                   |
+
+## Struktura projektu
+
+Projekt ma następującą strukturę:
+
+    .
+    ├── build                   # Skompilowane pliki (po wykonaniu komendy npm run build)
+    ├── database                # Pliki potrzebne do działania bazy danych json-server
+    ├── public
+    │   └── index.html          # Szablon wynikowego pliku html
+    ├── src
+    │   ├── scss                # Pliki styli w formacie scss
+    │   ├── js                  # Pliki JavaScript
+    │   ├── images              # Zdjęcia i obrazki
+    │   └── index.js            # Główny plik projektu (nie zmieniamy go)
+    └── README.md
