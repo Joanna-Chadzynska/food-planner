@@ -136,13 +136,13 @@ export const GlobalStyle = createGlobalStyle`
 
     /* Remove list styles on ul, ol elements with a class   attribute */
     ul,
-    ol {
-    	list-style: none;
+    ol, li {
+    	list-style-type: none;
     }
 
     /* A elements that don't have a class get default styles */
-    a:not([class]) {
-    	text-decoration-skip-ink: auto;
+    a {
+    	text-decoration:none
     }
 
     /* Make images easier to work with */

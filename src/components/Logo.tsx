@@ -2,11 +2,11 @@ import React from 'react';
 import styled from 'styled-components/macro';
 
 export const Container = styled.div`
-	background-color: #292f32;
-
+	background-color: inherit;
+	padding: 0.5em;
 	h1 {
 		font-family: ${({ theme }) => theme.fonts.family.charmonman};
-		font-size: 2rem;
+		font-size: clamp(1.75rem, 5vw, 2.5rem);
 
 		span:first-child {
 			color: #ffffff;
