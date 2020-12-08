@@ -169,6 +169,9 @@ export const GlobalStyle = createGlobalStyle`
     	border-spacing: 0;
     }
 
+    
+
+
     /* Remove all animations and transitions for people that    prefer not to see them */
     @media (prefers-reduced-motion: reduce) {
     	* {
@@ -180,6 +183,26 @@ export const GlobalStyle = createGlobalStyle`
     }
 
 
-    
+    .wrapper {
+        width: 1170px;
+        max-width: 100%;
+        margin: 0 auto;
+        padding-left: 1em;
+        padding-right: 1em;
+/* 
+        @media (min-width: 1170px) {
+            max-width: 1170px
+        } */
+    }
+
+    .row {
+        display: flex;
+        justify-content: space-between;
+        gap: 3em;
+    }
+
+    .col {
+        flex-direction: column;
+    }
 
 `;
