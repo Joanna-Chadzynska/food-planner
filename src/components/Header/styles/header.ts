@@ -4,6 +4,7 @@ import styled from 'styled-components/macro';
 export const Container = styled.header`
 	background-color: ${({ theme }) => theme.colors.txtCol_header};
 	position: fixed;
+	top: 0;
 	text-align: center;
 	width: 100%;
 	z-index: 999;
@@ -12,6 +13,7 @@ export const Container = styled.header`
 		display: flex;
 		justify-content: space-around;
 		align-items: center;
+		position: relative;
 	}
 `;
 
