@@ -2,6 +2,7 @@ import React from 'react';
 import {
 	AnchorLink,
 	Container,
+	Inner,
 	Item,
 	Link,
 	Navigation,
@@ -10,7 +11,9 @@ import {
 	ToggleLabel,
 } from './styles/header';
 
-export interface HeaderProps {}
+export interface HeaderProps {
+	className?: string;
+}
 export interface InputProps {
 	type?: string;
 	id?: string;
@@ -33,9 +36,14 @@ export interface HeaderComposition {
 
 const Header: React.SFC<HeaderProps> & HeaderComposition = ({
 	children,
+	className,
 	...restProps
 }) => {
-	return <Container {...restProps}>{children}</Container>;
+	return (
+		<Container {...restProps}>
+			<Inner className={className}>{children}</Inner>
+		</Container>
+	);
 };
 
 export const HeaderNavigation: React.FC = ({ children, ...restProps }) => (

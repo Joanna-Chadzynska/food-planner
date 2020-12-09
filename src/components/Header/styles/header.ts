@@ -3,6 +3,10 @@ import styled from 'styled-components/macro';
 
 export const Container = styled.header`
 	background-color: ${({ theme }) => theme.colors.txtCol_header};
+`;
+
+export const Inner = styled.div`
+	background-color: inherit;
 	position: fixed;
 	top: 0;
 	text-align: center;
@@ -11,7 +15,7 @@ export const Container = styled.header`
 
 	@media screen and (min-width: 800px) {
 		display: flex;
-		justify-content: space-around;
+		justify-content: space-between;
 		align-items: center;
 		position: relative;
 	}

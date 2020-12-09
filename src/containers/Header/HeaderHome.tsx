@@ -5,7 +5,7 @@ export interface HeaderHomeProps {}
 
 const HeaderHome: React.SFC<HeaderHomeProps> = () => {
 	return (
-		<Header>
+		<Header className='wrapper'>
 			<Logo />
 			<Header.ToggleInput type='checkbox' id='nav-toggle' />
 			<Header.Navigation>
