@@ -11,7 +11,7 @@ export interface FooterContainerProps {}
 const FooterContainer: React.SFC<FooterContainerProps> = () => {
 	return (
 		<>
-			<Footer className='wrapper' bg='gray'>
+			<Footer className='wrapper' bg='gray' id='contact'>
 				<Footer.Row>
 					<Footer.Column>
 						<Footer.Title>Lorem ipsum dolor</Footer.Title>

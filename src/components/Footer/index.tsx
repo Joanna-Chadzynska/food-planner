@@ -16,6 +16,7 @@ import {
 export interface FooterProps {
 	className?: string;
 	bg?: 'dark' | 'gray';
+	id?: string;
 }
 
 export interface FooterComposition {
@@ -34,10 +35,11 @@ const Footer: React.SFC<FooterProps> & FooterComposition = ({
 	children,
 	className,
 	bg,
+	id,
 	...restProps
 }) => {
 	return (
-		<Container bg={bg} {...restProps}>
+		<Container id={id} bg={bg} {...restProps}>
 			<Inner className={className}>{children}</Inner>
 		</Container>
 	);

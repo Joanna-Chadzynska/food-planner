@@ -6,7 +6,7 @@ export interface AuthorProps {}
 const Author: React.SFC<AuthorProps> = () => {
 	return (
 		<Info
-			id='about-author'
+			id='about-me'
 			bg='light'
 			className='wrapper'
 			direction='column-reverse'>
