@@ -195,6 +195,10 @@ export const GlobalStyle = createGlobalStyle`
         } */
     }
 
+    .dashboard {
+        padding: 0 3em;
+    }
+
     .row {
         display: flex;
         justify-content: space-between;
@@ -203,6 +207,29 @@ export const GlobalStyle = createGlobalStyle`
 
     .col {
         flex-direction: column;
+    }
+
+    .layout {
+        display: grid;
+        grid-template-columns: 1fr;
+        grid-template-rows: 200px 1fr;
+        height: calc(100vh - 81px);
+     
+        
+
+        article {
+            background-color: blue;
+            margin-top: clamp(60px, 5vw, 81px);
+            min-height: calc(100vh - 60px - 200px);
+	        @media screen and (min-width: 800px) {
+		        margin-top: 0;
+	        }
+        }
+
+        @media screen and (min-width: 800px) {
+            grid-template-columns: 150px auto;
+            grid-template-rows: 1fr;
+        }
     }
 
 `;
