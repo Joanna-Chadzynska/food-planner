@@ -1,11 +1,5 @@
 import { Footer, HeaderHome } from 'containers';
-import {
-	Author,
-	Company,
-	GoToApp,
-	Jumbotron,
-	Newsletter,
-} from 'containers/Home';
+import { Author, Company, GoToApp, Newsletter, Slider } from 'containers/Home';
 import React from 'react';
 export interface HomeProps {}
 
@@ -13,22 +7,11 @@ const Home: React.SFC<HomeProps> = () => {
 	return (
 		<>
 			<HeaderHome />
-			<br />
-			<br />
-			<br />
-			<br />
-			<br />
-			<br />
-			<Jumbotron />
-
+			<Slider />
 			<GoToApp />
-
 			<Company />
-
 			<Newsletter />
-
 			<Author />
-
 			<Footer />
 		</>
 	);
