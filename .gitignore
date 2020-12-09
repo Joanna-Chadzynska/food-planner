@@ -26,3 +26,5 @@ database
 package-lock.json
 
 .eslintcache
+
+.env
