@@ -1,7 +1,8 @@
 import * as ROUTES from 'constants/routes';
-import { Dashboard, Home, NotFound, SignIn, SignUp } from 'pages';
+import { Dashboard, Home, NotFound, SignIn, SignUp, UserProfile } from 'pages';
 import React from 'react';
 import { Route, Switch } from 'react-router-dom';
+import PrivateRoute from './PrivateRoute';
 export interface RoutingProps {}
 
 const Routing: React.SFC<RoutingProps> = () => {
@@ -19,6 +20,7 @@ const Routing: React.SFC<RoutingProps> = () => {
 			<Route path={ROUTES.SIGN_UP}>
 				<SignUp />
 			</Route>
+			<PrivateRoute exact path={ROUTES.USER_PROFILE} component={UserProfile} />
 			<Route path='*'>
 				<NotFound />
 			</Route>
