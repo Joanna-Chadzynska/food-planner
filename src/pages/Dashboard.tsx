@@ -15,9 +15,6 @@ const Dashboard: React.SFC<DashboardProps> = () => {
 			<main className='layout'>
 				<Sidebar />
 				<MainApp />
-				{/* <article>
-					<button onClick={goBack}>wróć na stronę główną </button>
-				</article> */}
 			</main>
 		</>
 	);
