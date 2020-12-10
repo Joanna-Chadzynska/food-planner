@@ -1,6 +1,6 @@
 export const HOME = '/';
 export const DASHBOARD = '/dashboard';
-export const DASHBOARD_PLANS = '/dashboard/plans';
+export const DASHBOARD_MAIN = '/dashboard/main';
 export const DASHBOARD_RECIPES = '/dashboard/recipes';
 export const DASHBOARD_SCHEDULES = '/dashboard/schedules';
 export const USER_PROFILE = '/user';
