@@ -13,7 +13,14 @@ const GoToApp: React.SFC = () => {
 				</Info.Text>
 			</Info.ContentWrapper>
 
-			<Info.ButtonLink to={ROUTES.DASHBOARD}>Go to Dashboard</Info.ButtonLink>
+			<Info.ButtonLink
+				to={
+					localStorage.getItem('user')
+						? ROUTES.DASHBOARD_MAIN
+						: ROUTES.DASHBOARD
+				}>
+				Go to Dashboard
+			</Info.ButtonLink>
 		</Info>
 	);
 };

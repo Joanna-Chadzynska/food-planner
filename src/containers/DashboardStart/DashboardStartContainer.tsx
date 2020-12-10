@@ -26,7 +26,7 @@ const DashboardStartContainer: React.SFC<DashboardStartContainerProps> = () => {
 
 		setUser({ name: '' });
 		history.push('/dashboard/main');
-		window.location.reload(false);
+		window.location.reload();
 	};
 
 	return (
