@@ -30,6 +30,8 @@ export interface InputProps {
 	id?: string;
 	value?: string;
 	name?: string;
+	placeholder?: string;
+	width?: string;
 }
 
 export interface SubmitProps {
