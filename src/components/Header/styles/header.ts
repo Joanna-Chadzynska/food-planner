@@ -61,10 +61,15 @@ export const Link = styled(NavLink)`
 
 export const AnchorLink = styled.a`
 	color: #ffffff;
-	font-size: 1.2rem;
+	font-size: clamp(1.2rem, 5vw, 1.5rem);
 	text-transform: uppercase;
 	transition: color 0.15s ease-in-out, opacity 0.15s ease-in-out;
 	opacity: 0;
+
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	gap: 0.75em;
 
 	&:hover {
 		color: ${({ theme }) => theme.colors.btn_screens};
