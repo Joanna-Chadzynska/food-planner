@@ -1,8 +1,8 @@
-import { Form, MainApp } from 'components';
+import { MainApp } from 'components';
+import { DashboardStartContainer } from 'containers';
 import * as React from 'react';
-export interface DashboardStartProps {}
 
-const DashboardStart: React.SFC<DashboardStartProps> = () => {
+const DashboardStart: React.SFC = () => {
 	return (
 		<MainApp.Inner width='90' height='90'>
 			<MainApp.Content
@@ -11,29 +11,7 @@ const DashboardStart: React.SFC<DashboardStartProps> = () => {
 				width='50'
 				align='center'
 				top='10'>
-				<Form>
-					<Form.Title>Witaj,</Form.Title>
-					<Form.Break />
-					<Form.SubTitle>
-						wygląda na to że jesteś tutaj pierwszy raz!{' '}
-					</Form.SubTitle>
-					<Form.Break />
-					<Form.Base onSubmit={() => {}}>
-						<Form.Input
-							placeholder='tutaj wpisz jak masz na imię'
-							onChange={() => {}}
-							type='text'
-							width='50'
-						/>
-						<Form.Break />
-						<Form.Submit type='submit'>Gotowe!</Form.Submit>
-					</Form.Base>
-					<Form.Break />
-					<Form.Text>
-						Podaj nam swoje imię, a my zorganizujemy dla Ciebie naszą aplikację
-						:)
-					</Form.Text>
-				</Form>
+				<DashboardStartContainer />
 			</MainApp.Content>
 		</MainApp.Inner>
 	);
