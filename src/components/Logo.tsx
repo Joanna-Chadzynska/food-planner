@@ -1,7 +1,14 @@
+import * as ROUTES from 'constants/routes';
 import React from 'react';
+import { Link } from 'react-router-dom';
 import styled from 'styled-components/macro';
 
-export const Container = styled.div`
+export interface LogoProps {
+	to?: any;
+}
+
+export const Container = styled(Link)`
+	display: block;
 	background-color: inherit;
 	padding: 0.5em;
 	h1 {
@@ -21,8 +28,8 @@ export const Container = styled.div`
 
 export interface LogoProps {}
 
-const Logo: React.SFC = () => (
-	<Container>
+const Logo: React.SFC<LogoProps> = ({ to, ...restProps }) => (
+	<Container to={ROUTES.HOME} {...restProps}>
 		<h1>
 			<span>Zaplanuj</span>
 			<span>Jedzonko</span>
