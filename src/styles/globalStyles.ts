@@ -169,9 +169,6 @@ export const GlobalStyle = createGlobalStyle`
     	border-spacing: 0;
     }
 
-    
-
-
     /* Remove all animations and transitions for people that    prefer not to see them */
     @media (prefers-reduced-motion: reduce) {
     	* {
@@ -212,24 +209,15 @@ export const GlobalStyle = createGlobalStyle`
     .layout {
         display: grid;
         grid-template-columns: 1fr;
-        grid-template-rows: 200px 1fr;
+        grid-template-rows: auto auto;
         height: calc(100vh - 81px);
-     
-        
-
-        article {
-            background-color: blue;
-            margin-top: clamp(60px, 5vw, 81px);
-            min-height: calc(100vh - 60px - 200px);
-	        @media screen and (min-width: 800px) {
-		        margin-top: 0;
-	        }
-        }
 
         @media screen and (min-width: 800px) {
-            grid-template-columns: 150px auto;
+            grid-template-columns: 250px auto;
             grid-template-rows: 1fr;
         }
     }
+
+
 
 `;
