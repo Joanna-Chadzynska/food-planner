@@ -5,6 +5,7 @@ export { default as NotFound } from './NotFound';
 export { default as Plans } from './Plans';
 export { default as Recipes } from './Recipes';
 export { default as Schedules } from './Schedules';
+export { default as ShoppingList } from './ShoppingList';
 export { default as SignIn } from './SignIn';
 export { default as SignUp } from './SignUp';
 export { default as UserProfile } from './UserProfile';

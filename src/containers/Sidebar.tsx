@@ -19,6 +19,12 @@ const SidebarContainer: React.SFC<SidebarContainerProps> = () => {
 				<Sidebar.Link activeClassName='active' to={ROUTES.DASHBOARD_SCHEDULES}>
 					Plany
 				</Sidebar.Link>
+
+				<Sidebar.Link
+					activeClassName='active'
+					to={ROUTES.DASHBOARD_SHOPPING_LIST}>
+					Lista Zakupów
+				</Sidebar.Link>
 			</Sidebar.Group>
 		</Sidebar>
 	);

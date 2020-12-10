@@ -3,6 +3,7 @@ export const DASHBOARD = '/dashboard';
 export const DASHBOARD_MAIN = '/dashboard/main';
 export const DASHBOARD_RECIPES = '/dashboard/recipes';
 export const DASHBOARD_SCHEDULES = '/dashboard/schedules';
+export const DASHBOARD_SHOPPING_LIST = '/dashboard/shopping_list';
 export const USER_PROFILE = '/user';
 export const SIGN_IN = '/sign_in';
 export const SIGN_UP = '/sign_up';
