@@ -57,6 +57,12 @@ export const Item = styled.li`
 
 export const Link = styled(NavLink)`
 	color: #ffffff;
+	font-size: clamp(1.2rem, 5vw, 1.6rem);
+	transition: color 0.15s ease-in-out;
+
+	&:hover {
+		color: ${({ theme }) => theme.colors.btn_screens};
+	}
 `;
 
 export const AnchorLink = styled.a`
@@ -155,5 +161,62 @@ export const ToggleInput = styled.input`
 	&:checked ~ ${Navigation} ${AnchorLink} {
 		opacity: 1;
 		transition: opacity 250ms ease-in-out 250ms;
+	}
+`;
+export const Group = styled.div`
+	display: flex;
+	align-items: center;
+	gap: 1em;
+	margin-bottom: 1em;
+
+	@media screen and (min-width: 800px) {
+		margin-bottom: 0;
+	}
+`;
+
+export const Dropdown = styled.div`
+	background-color: ${({ theme }) => theme.colors.sidebarNav};
+	display: none;
+	position: absolute;
+	top: 100%;
+	right: 0;
+	width: calc(100% + 2em);
+	padding: 1em;
+
+	@media screen and (min-width: 800px) {
+		width: 200px;
+		top: 100%;
+		right: -3em;
+	}
+`;
+
+export const Profile = styled.div`
+	display: flex;
+	align-items: center;
+	margin-left: 20px;
+	position: relative;
+	height: 100%;
+
+	&:hover > ${Dropdown} {
+		display: block;
+		flex-direction: column;
+	}
+`;
+
+export const Name = styled.h3``;
+
+export const Picture = styled.div``;
+
+export const Button = styled.button`
+	background-color: ${({ theme }) => theme.colors.btn_screens};
+	border: none;
+	border-radius: 5px;
+	color: #ffffff;
+	font-size: clamp(1rem, 5vw, 1.3rem);
+	padding: 0.5em 1em;
+	transition: background-color 0.3s ease-in-out;
+
+	&:hover {
+		background-color: ${({ theme }) => theme.colors.trash};
 	}
 `;

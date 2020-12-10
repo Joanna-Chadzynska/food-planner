@@ -1,33 +1,32 @@
 import React from 'react';
 import {
 	AnchorLink,
+	Button,
 	Container,
+	Dropdown,
+	Group,
 	Inner,
 	Item,
 	Link,
+	Name,
 	Navigation,
 	NavigationInner,
+	Picture,
+	Profile,
 	ToggleInput,
 	ToggleLabel,
 } from './styles/header';
-
-export interface HeaderProps {
-	className?: string;
-}
-export interface InputProps {
-	type?: string;
-	id?: string;
-	htmlFor?: string;
-}
-
-export interface LinkProps {
-	to?: any;
-	href?: string;
-}
+import { ButtonProps, HeaderProps, InputProps, LinkProps } from './types';
 
 export interface HeaderComposition {
 	AnchorLink: React.FC<LinkProps>;
+	Button: React.FC<ButtonProps>;
+	Dropdown: React.FC;
+	Group: React.FC;
 	Item: React.FC;
+	Name: React.FC;
+	Profile: React.FC;
+	Picture: React.FC;
 	Link: React.FC<LinkProps>;
 	Navigation: React.FC;
 	ToggleInput: React.FC<InputProps>;
@@ -97,11 +96,47 @@ export const HeaderToggleLabel: React.FC<InputProps> = ({
 	</ToggleLabel>
 );
 
+export const HeaderDropdown: React.FC = ({ children, ...restProps }) => (
+	<Dropdown {...restProps}>{children}</Dropdown>
+);
+
+export const HeaderGroup: React.FC = ({ children, ...restProps }) => (
+	<Group {...restProps}>{children}</Group>
+);
+
+export const HeaderProfile: React.FC = ({ children, ...restProps }) => (
+	<Profile {...restProps}>{children}</Profile>
+);
+
+export const HeaderName: React.FC = ({ children, ...restProps }) => (
+	<Name {...restProps}>{children}</Name>
+);
+
+export const HeaderPicture: React.FC = ({ children, ...restProps }) => (
+	<Picture {...restProps}>{children}</Picture>
+);
+
+export const HeaderButton: React.FC<ButtonProps> = ({
+	children,
+	onClick,
+	...restProps
+}) => (
+	<Button onClick={onClick} {...restProps}>
+		{children}
+	</Button>
+);
+
 Header.AnchorLink = HeaderAnchorLink;
+Header.Button = HeaderButton;
+Header.Dropdown = HeaderDropdown;
+Header.Group = HeaderGroup;
 Header.Item = HeaderItem;
 Header.Link = HeaderLink;
 Header.Navigation = HeaderNavigation;
 Header.ToggleInput = ToggleInput;
 Header.ToggleLabel = ToggleLabel;
+Header.Profile = HeaderProfile;
+Header.Picture = HeaderPicture;
+Header.Name = HeaderName;
 
 export default Header;
