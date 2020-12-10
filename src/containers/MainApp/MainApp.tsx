@@ -1,3 +1,4 @@
+import PrivateRoute from 'app/routing/PrivateRoute';
 import { MainApp } from 'components';
 import * as ROUTES from 'constants/routes';
 import { DashboardStart, Plans, Recipes, Schedules } from 'pages';
@@ -11,15 +12,20 @@ const MainAppContainer: React.SFC = () => {
 				<Route exact path={ROUTES.DASHBOARD}>
 					<DashboardStart />
 				</Route>
-				<Route exact path={ROUTES.DASHBOARD_MAIN}>
-					<Plans />
-				</Route>
-				<Route exact path={ROUTES.DASHBOARD_RECIPES}>
-					<Recipes />
-				</Route>
-				<Route exact path={ROUTES.DASHBOARD_SCHEDULES}>
-					<Schedules />
-				</Route>
+
+				<PrivateRoute exact path={ROUTES.DASHBOARD_MAIN} component={Plans} />
+
+				<PrivateRoute
+					exact
+					path={ROUTES.DASHBOARD_RECIPES}
+					component={Recipes}
+				/>
+
+				<PrivateRoute
+					exact
+					path={ROUTES.DASHBOARD_SCHEDULES}
+					component={Schedules}
+				/>
 			</Switch>
 		</MainApp>
 	);
