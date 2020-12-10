@@ -1,4 +1,4 @@
-import { HeaderDashboard, Sidebar } from 'containers';
+import { HeaderDashboard, MainApp, Sidebar } from 'containers';
 import React from 'react';
 import { useHistory } from 'react-router-dom';
 
@@ -14,9 +14,10 @@ const Dashboard: React.SFC<DashboardProps> = () => {
 			<HeaderDashboard />
 			<main className='layout'>
 				<Sidebar />
-				<article>
+				<MainApp />
+				{/* <article>
 					<button onClick={goBack}>wróć na stronę główną </button>
-				</article>
+				</article> */}
 			</main>
 		</>
 	);
