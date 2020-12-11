@@ -1,9 +1,10 @@
+import { PlansContainer } from 'containers';
 import React from 'react';
 
 export interface PlansProps {}
 
 const Plans: React.SFC<PlansProps> = () => {
-	return <div>plans</div>;
+	return <PlansContainer />;
 };
 
 export default Plans;
