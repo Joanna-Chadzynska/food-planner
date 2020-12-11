@@ -37,7 +37,7 @@ export const NavItem = styled(NavLink)<LinkProps>`
 	padding: 1.5em 1.5em;
 	transition: background-color 0.15s ease-in-out;
 	position: relative;
-
+	width: 100%;
 	&:hover {
 		background-color: ${darken(0.04, '#5b605f')};
 
