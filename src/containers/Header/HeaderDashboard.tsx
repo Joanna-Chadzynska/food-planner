@@ -3,15 +3,17 @@ import { fas } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { Header, Logo } from 'components';
 import * as ROUTES from 'constants/routes';
+import { updateUser } from 'features/userSlice';
+import { useHttpClient } from 'hooks';
+import { User } from 'models/interfaces/User';
 import React, { useEffect, useState } from 'react';
+import { useDispatch } from 'react-redux';
 
 library.add(fas);
 
-type User = {
-	name: string;
-};
-
 const HeaderDashboard: React.SFC = () => {
+	const dispatch = useDispatch();
+	const client = useHttpClient();
 	const [userData, setUserData] = useState<User>();
 	const user = localStorage.getItem('user');
 
@@ -22,8 +24,15 @@ const HeaderDashboard: React.SFC = () => {
 		return () => {};
 	}, [user]);
 
-	const logOut = (name: string | undefined) => {
+	const clearUserData = async (): Promise<void> => {
+		Promise.resolve(client.clearUser({ name: '' })).then((resp) =>
+			dispatch(updateUser(resp))
+		);
+	};
+
+	const logOut = () => {
 		localStorage.removeItem('user');
+		clearUserData();
 		window.location.reload();
 	};
 
@@ -51,9 +60,7 @@ const HeaderDashboard: React.SFC = () => {
 						</Header.Group>
 						<br />
 						<Header.Group>
-							<Header.Button onClick={() => logOut(userData?.name)}>
-								Wyloguj się
-							</Header.Button>
+							<Header.Button onClick={logOut}>Wyloguj się</Header.Button>
 						</Header.Group>
 					</Header.Dropdown>
 				</Header.Profile>

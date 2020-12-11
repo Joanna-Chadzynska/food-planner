@@ -1,11 +1,16 @@
 import { Form } from 'components';
+import { setNewUser, updateUser } from 'features/userSlice';
+import { useHttpClient } from 'hooks';
 import React, { useState } from 'react';
+import { useDispatch } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 
 export interface DashboardStartContainerProps {}
 
 const DashboardStartContainer: React.SFC<DashboardStartContainerProps> = () => {
 	const history = useHistory();
+	const dispatch = useDispatch();
+	const client = useHttpClient();
 
 	const [user, setUser] = useState({
 		name: '',
@@ -15,13 +20,28 @@ const DashboardStartContainer: React.SFC<DashboardStartContainerProps> = () => {
 		setUser({ ...user, name: e.target.value });
 	};
 
+	const createNewUser = async (): Promise<void> => {
+		Promise.resolve(client.createUser(user)).then((resp) =>
+			dispatch(setNewUser(resp))
+		);
+	};
+
+	const clearUserData = async (): Promise<void> => {
+		Promise.resolve(client.clearUser({ name: '' })).then((resp) =>
+			dispatch(updateUser(resp))
+		);
+	};
+
 	const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
 		e.preventDefault();
 		if (!localStorage.getItem('user')) {
 			localStorage.setItem('user', JSON.stringify(user));
+			createNewUser();
 		} else {
 			localStorage.removeItem('user');
+			clearUserData();
 			localStorage.setItem('user', JSON.stringify(user));
+			createNewUser();
 		}
 
 		setUser({ name: '' });
