@@ -5,9 +5,9 @@ export interface PlansContainerProps {}
 
 const PlansContainer: React.SFC<PlansContainerProps> = () => {
 	return (
-		<div>
+		<>
 			<Buttons />
-		</div>
+		</>
 	);
 };
 
