@@ -28,6 +28,9 @@ const InfoButtons: React.SFC<InfoButtonsProps> = () => {
 				<DashboardButton.Text>
 					Masz już 99 przepisów, nieźle!
 				</DashboardButton.Text>
+				<DashboardButton.Close>
+					<FontAwesomeIcon icon={['fas', 'window-close']} />
+				</DashboardButton.Close>
 			</DashboardButton>
 
 			<DashboardButton
@@ -39,6 +42,9 @@ const InfoButtons: React.SFC<InfoButtonsProps> = () => {
 					<FontAwesomeIcon icon={['fas', 'exclamation-circle']} size='3x' />
 				</DashboardButton.Icon>
 				<DashboardButton.Text>Pamiętaj, aby dodać plan!</DashboardButton.Text>
+				<DashboardButton.Close>
+					<FontAwesomeIcon icon={['fas', 'window-close']} />
+				</DashboardButton.Close>
 			</DashboardButton>
 
 			<DashboardButton
@@ -52,6 +58,9 @@ const InfoButtons: React.SFC<InfoButtonsProps> = () => {
 				<DashboardButton.Text>
 					Świetnie że jesteś! Udanego planowania i smacznego! :)
 				</DashboardButton.Text>
+				<DashboardButton.Close>
+					<FontAwesomeIcon icon={['fas', 'window-close']} />
+				</DashboardButton.Close>
 			</DashboardButton>
 		</DashboardButton.Group>
 	);
