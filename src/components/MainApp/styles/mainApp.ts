@@ -30,13 +30,28 @@ export const Container = styled.article`
 	background-size: contain;
 	min-height: calc(100vh - 250px + 100px);
 	height: 100%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+
 	@media screen and (min-width: 800px) {
 		margin-top: 0;
 		min-height: calc(100vh - 250px);
 	}
-	display: flex;
+`;
+
+export const Group = styled.div`
+	display: grid;
+	grid-template-rows: 1fr minmax(450px, auto);
+	grid-template-columns: 1fr;
 	justify-content: center;
-	align-items: center;
+	align-self: flex-start;
+	padding: 1em;
+
+	@media screen and (min-width: 800px) {
+		padding: 1em 4em;
+		align-self: center;
+	}
 `;
 
 export const Inner = styled.div<InnerProps>`

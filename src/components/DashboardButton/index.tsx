@@ -1,43 +1,30 @@
 import { library } from '@fortawesome/fontawesome-svg-core';
 import { far } from '@fortawesome/free-regular-svg-icons';
-import React from 'react';
+import React, { createContext, useContext, useState } from 'react';
 import {
 	Close,
 	Container,
 	Group,
+	GroupProps,
 	GroupWrapper,
 	Icon,
 	Inner,
 	Text,
 } from './styles/dashboardButton';
-
-export interface ButtonProps {
-	onClick?: (event: React.MouseEvent<HTMLButtonElement>) => void;
-}
-
-export interface DashboardButtonProps extends ButtonProps {
-	id?: string;
-	direction?: 'row' | 'column' | 'row-reverse' | 'column-reverse';
-	color?: 'success' | 'info' | 'warning' | 'error';
-}
-
-export interface TextProps {
-	color?: 'success' | 'info' | 'warning' | 'error';
-}
-
-export interface GroupProps {
-	direction?: 'row' | 'column' | 'row-reverse' | 'column-reverse';
-}
-
-export interface DashboardButtonComposition {
-	Close: React.FC<ButtonProps>;
-	Group: React.FC<GroupProps>;
-	GroupWrapper: React.FC;
-	Icon: React.FC;
-	Text: React.FC<TextProps>;
-}
+import {
+	ButtonProps,
+	DashboardButtonComposition,
+	DashboardButtonProps,
+} from './types';
 
 library.add(far);
+
+export interface ContextProps {
+	showInfoButton?: boolean;
+	setShowInfoButton?: React.Dispatch<React.SetStateAction<boolean>>;
+}
+
+export const ToggleButtonContext = createContext<ContextProps>({});
 
 const DashboardButton: React.SFC<DashboardButtonProps> &
 	DashboardButtonComposition = ({
@@ -48,12 +35,17 @@ const DashboardButton: React.SFC<DashboardButtonProps> &
 	color,
 	...restProps
 }) => {
+	const [showInfoButton, setShowInfoButton] = useState(true);
 	return (
-		<Container data-id={id} onClick={onClick} {...restProps}>
-			<Inner color={color} direction={direction}>
-				{children}
-			</Inner>
-		</Container>
+		<ToggleButtonContext.Provider value={{ showInfoButton, setShowInfoButton }}>
+			{showInfoButton ? (
+				<Container data-id={id} onClick={onClick} {...restProps}>
+					<Inner color={color} direction={direction}>
+						{children}
+					</Inner>
+				</Container>
+			) : null}
+		</ToggleButtonContext.Provider>
 	);
 };
 
@@ -65,11 +57,16 @@ export const DashboardButtonClose: React.FC<ButtonProps> = ({
 	onClick,
 	children,
 	...restProps
-}) => (
-	<Close onClick={onClick} {...restProps}>
-		{children}
-	</Close>
-);
+}) => {
+	const { showInfoButton, setShowInfoButton } = useContext(ToggleButtonContext);
+	return (
+		<Close
+			onClick={() => setShowInfoButton && setShowInfoButton(!showInfoButton)}
+			{...restProps}>
+			{children}
+		</Close>
+	);
+};
 
 export const DashboardButtonGroup: React.FC<GroupProps> = ({
 	direction,

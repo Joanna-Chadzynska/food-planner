@@ -1,5 +1,5 @@
 import React from 'react';
-import { Container, Content, Inner } from './styles/mainApp';
+import { Container, Content, Group, Inner } from './styles/mainApp';
 
 export interface MainAppProps {}
 export interface InnerProps {
@@ -30,6 +30,7 @@ export interface InnerProps {
 export interface MainAppComposition {
 	Inner: React.FC<InnerProps>;
 	Content: React.FC<InnerProps>;
+	Group: React.FC;
 }
 
 const MainApp: React.SFC<MainAppProps> & MainAppComposition = ({
@@ -72,7 +73,14 @@ export const MainAppContent: React.FC<InnerProps> = ({
 	</Content>
 );
 
+export const MainAppGroup: React.FC = ({
+	children,
+
+	...restProps
+}) => <Group {...restProps}>{children}</Group>;
+
 MainApp.Inner = MainAppInner;
 MainApp.Content = MainAppContent;
+MainApp.Group = MainAppGroup;
 
 export default MainApp;

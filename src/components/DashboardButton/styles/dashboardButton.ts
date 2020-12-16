@@ -24,9 +24,12 @@ export const Group = styled.div<GroupProps>`
 
 export const GroupWrapper = styled.div`
 	display: grid;
-	grid-template-columns: auto 1fr;
-	width: 90%;
+	grid-template-rows: auto 1fr;
 	grid-gap: 2em;
+
+	@media screen and (min-width: 800px) {
+		grid-template-columns: auto 1fr;
+	}
 `;
 
 export const Icon = styled.div``;
@@ -37,7 +40,7 @@ export const Text = styled.p<ButtonProps>`
 	font-weight: 600;
 `;
 
-export const Close = styled.button`
+export const Close = styled.div`
 	border: none;
 	background-color: inherit;
 	display: block;
