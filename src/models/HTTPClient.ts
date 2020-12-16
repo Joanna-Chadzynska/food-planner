@@ -130,7 +130,7 @@ export class HttpClient {
 
 	private async getElementById<T>(id: number, endpoint: string): Promise<T> {
 		try {
-			const response = (await this.request.get(`${endpoint}${id}/`)).data;
+			const response = (await this.request.get(`${endpoint}${id}`)).data;
 			return response;
 		} catch (error) {
 			return error;
