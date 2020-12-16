@@ -7,7 +7,7 @@ import { importShoppingLists } from 'features/shoppingListsSlice';
 import { importUser } from 'features/userSlice';
 import { useHttpClient } from 'hooks';
 import { DashboardStart, Plans, Recipes, Schedules, ShoppingList } from 'pages';
-import React, { useEffect } from 'react';
+import React, { useCallback, useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { Route, Switch } from 'react-router-dom';
 
@@ -15,7 +15,7 @@ const MainAppContainer: React.SFC = () => {
 	const client = useHttpClient();
 	const dispatch = useDispatch();
 
-	const importDataFromAPI = async (): Promise<void> => {
+	const importDataFromAPI = useCallback(async (): Promise<void> => {
 		const [user, recipes, schedules, shoppingLists] = await Promise.all([
 			client.getUser(),
 			client.getRecipes(),
@@ -27,7 +27,7 @@ const MainAppContainer: React.SFC = () => {
 		dispatch(importRecipes(recipes));
 		dispatch(importSchedules(schedules));
 		dispatch(importShoppingLists(shoppingLists));
-	};
+	}, [client]);
 
 	useEffect(() => {
 		if (!localStorage.getItem('user')) return;
