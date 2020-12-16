@@ -1,14 +1,15 @@
 import { library } from '@fortawesome/fontawesome-svg-core';
 import { fas } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { RootState } from 'app/store';
 import { DashboardButton } from 'components';
 import React from 'react';
-
-export interface InfoButtonsProps {}
+import { useSelector } from 'react-redux';
 
 library.add(fas);
 
-const InfoButtons: React.SFC<InfoButtonsProps> = () => {
+const InfoButtons: React.SFC = () => {
+	const recipes = useSelector((state: RootState) => state.recipes.recipes);
 	const handleClick = (e: React.MouseEvent<HTMLButtonElement>) => {
 		e.preventDefault();
 		e.stopPropagation();
@@ -26,7 +27,7 @@ const InfoButtons: React.SFC<InfoButtonsProps> = () => {
 					<FontAwesomeIcon icon={['fas', 'info-circle']} size='3x' />
 				</DashboardButton.Icon>
 				<DashboardButton.Text>
-					Masz już 99 przepisów, nieźle!
+					Masz już {recipes.length} przepisów, nieźle!
 				</DashboardButton.Text>
 				<DashboardButton.Close>
 					<FontAwesomeIcon icon={['fas', 'window-close']} />
