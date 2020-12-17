@@ -1,21 +1,34 @@
-import { library } from '@fortawesome/fontawesome-svg-core';
-import { far } from '@fortawesome/free-regular-svg-icons';
-import { fas } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { List } from 'components';
 import React from 'react';
-library.add(far, fas);
 
-export interface ActionsProps {}
+export interface ActionsProps {
+	itemId: number;
+	callback?: () => void;
+	edit?: () => void;
+	delete?: () => void;
+}
 
-const Actions: React.SFC<ActionsProps> = () => {
+const Actions: React.SFC<ActionsProps> = ({ itemId, callback }) => {
+	const handleItemActions = (
+		itemId: number,
+		actionType: string,
+		callback?: () => void
+	) => {
+		console.log({ itemId });
+		console.log({ actionType });
+	};
 	return (
 		<List.ButtonsContainer>
-			<List.Button action='edit'>
+			<List.Button
+				onClick={() => handleItemActions(itemId, 'edit', callback)}
+				action='edit'>
 				<FontAwesomeIcon icon={['fas', 'edit']} />
 			</List.Button>
 
-			<List.Button action='delete'>
+			<List.Button
+				onClick={() => handleItemActions(itemId, 'delete', callback)}
+				action='delete'>
 				<FontAwesomeIcon icon={['far', 'trash-alt']} />
 			</List.Button>
 		</List.ButtonsContainer>

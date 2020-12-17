@@ -1,12 +1,8 @@
-import { library } from '@fortawesome/fontawesome-svg-core';
-import { fas } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { RootState } from 'app/store';
 import { DashboardButton } from 'components';
 import React from 'react';
 import { useSelector } from 'react-redux';
-
-library.add(fas);
 
 const InfoButtons: React.SFC = () => {
 	const recipes = useSelector((state: RootState) => state.recipes.recipes);

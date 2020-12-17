@@ -1,5 +1,3 @@
-import { library } from '@fortawesome/fontawesome-svg-core';
-import { fas } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { RootState } from 'app/store';
 import { Loading, MainApp, Table } from 'components';
@@ -8,8 +6,6 @@ import { useSelector } from 'react-redux';
 import { Buttons, Schedule } from './components';
 
 export interface PlansContainerProps {}
-
-library.add(fas);
 
 const PlansContainer: React.SFC<PlansContainerProps> = () => {
 	const [index, setIndex] = useState(1);

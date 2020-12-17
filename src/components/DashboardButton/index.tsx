@@ -1,5 +1,3 @@
-import { library } from '@fortawesome/fontawesome-svg-core';
-import { far } from '@fortawesome/free-regular-svg-icons';
 import React, { createContext, useContext, useState } from 'react';
 import {
 	Close,
@@ -16,8 +14,6 @@ import {
 	DashboardButtonComposition,
 	DashboardButtonProps,
 } from './types';
-
-library.add(far);
 
 export interface ContextProps {
 	showInfoButton?: boolean;

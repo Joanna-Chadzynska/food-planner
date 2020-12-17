@@ -1,5 +1,3 @@
-import { library } from '@fortawesome/fontawesome-svg-core';
-import { fas } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { Header, Logo } from 'components';
 import * as ROUTES from 'constants/routes';
@@ -8,8 +6,6 @@ import { useHttpClient } from 'hooks';
 import { User } from 'models/interfaces/User';
 import React, { useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
-
-library.add(fas);
 
 const HeaderDashboard: React.SFC = () => {
 	const dispatch = useDispatch();
