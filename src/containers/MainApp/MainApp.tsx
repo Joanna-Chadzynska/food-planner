@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import PrivateRoute from 'app/routing/PrivateRoute';
 import { MainApp } from 'components';
 import * as ROUTES from 'constants/routes';

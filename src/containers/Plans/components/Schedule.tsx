@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import { Table } from 'components';
 import { Schedule } from 'models/interfaces/Schedule';
 import React, { useCallback, useEffect, useState } from 'react';
