@@ -15,6 +15,8 @@ export const recipesSlice = createSlice({
 	reducers: {
 		importRecipes: (state, { payload }: PayloadAction<Recipe[]>) => {
 			state.recipes = payload;
+			state.loading = false;
+			state.error = null;
 		},
 		importRecipeById: (state, { payload }: PayloadAction<Recipe>) => {
 			state.recipe = payload;
