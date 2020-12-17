@@ -7,7 +7,7 @@ export interface RecipesProps {}
 const Recipes: React.SFC<RecipesProps> = () => {
 	return (
 		<MainApp.Inner width='90' height='90'>
-			<MainApp.Content direction='row' content='center'>
+			<MainApp.Content direction='row'>
 				<RecipesContainer />
 			</MainApp.Content>
 		</MainApp.Inner>
