@@ -18,6 +18,8 @@ export const shoppingListsSlice = createSlice({
 			{ payload }: PayloadAction<ShoppingList[]>
 		) => {
 			state.shoppingLists = payload;
+			state.loading = false;
+			state.error = null;
 		},
 		decrement: (state) => {},
 		// Use the PayloadAction type to declare the contents of `action.payload`
