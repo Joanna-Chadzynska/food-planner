@@ -24,7 +24,11 @@ const Table: React.SFC<TableProps> = () => {
 
 			<List.TableBody>
 				{loading ? (
-					<Loading.Bouncer />
+					<List.TableRow>
+						<List.TableBodyCol>
+							<Loading.Bouncer />
+						</List.TableBodyCol>
+					</List.TableRow>
 				) : (
 					recipes.map((recipe) => <RecipeDetails key={recipe.id} {...recipe} />)
 				)}

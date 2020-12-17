@@ -15,24 +15,30 @@ const Loading: React.SFC & LoadingComposition = ({
 };
 
 export const LoadingBouncer: React.FC = ({ ...restProps }) => (
-	<Bouncer {...restProps}>
-		<div></div>
-		<div></div>
-		<div></div>
-		<div></div>
-	</Bouncer>
+	<Container>
+		<Bouncer {...restProps}>
+			<div></div>
+			<div></div>
+			<div></div>
+			<div></div>
+		</Bouncer>
+	</Container>
 );
 export const LoadingSpinner: React.FC = ({ ...restProps }) => (
-	<Spinner {...restProps}>
-		<div></div>
-		<div></div>
-	</Spinner>
+	<Container>
+		<Spinner {...restProps}>
+			<div></div>
+			<div></div>
+		</Spinner>
+	</Container>
 );
 export const LoadingSquare: React.FC = ({ ...restProps }) => (
-	<Square {...restProps}>
-		<div></div>
-		<div></div>
-	</Square>
+	<Container>
+		<Square {...restProps}>
+			<div></div>
+			<div></div>
+		</Square>
+	</Container>
 );
 
 Loading.Bouncer = LoadingBouncer;
