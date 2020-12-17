@@ -4,4 +4,7 @@ export { default as HeaderDashboard } from './Header/HeaderDashboard';
 export { default as HeaderHome } from './Header/HeaderHome';
 export { default as MainApp } from './MainApp';
 export { default as PlansContainer } from './Plans';
+export { default as RecipesContainer } from './Recipes';
+export { default as SchedulesContainer } from './Schedules';
+export { default as ShoppingListContainer } from './ShoppingList';
 export { default as Sidebar } from './Sidebar';
