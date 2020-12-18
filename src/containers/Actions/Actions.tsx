@@ -3,7 +3,7 @@ import { List } from 'components';
 import React from 'react';
 
 export interface ActionsProps {
-	itemId: number;
+	itemId?: number;
 	callback?: () => void;
 	edit?: () => void;
 	delete?: () => void;
@@ -11,8 +11,8 @@ export interface ActionsProps {
 
 const Actions: React.SFC<ActionsProps> = ({ itemId, callback }) => {
 	const handleItemActions = (
-		itemId: number,
-		actionType: string,
+		itemId?: number,
+		actionType?: string,
 		callback?: () => void
 	) => {
 		console.log({ itemId });
