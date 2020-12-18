@@ -1,23 +1,21 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { DashboardButton } from 'components';
+import { AddRecipe, AddSchedule, AddShoppingList } from 'containers/Forms';
+import { useModalContext } from 'contexts/ModalContext';
 import React from 'react';
 
 export interface AddingButtonsProps {}
 
 const AddingButtons: React.SFC<AddingButtonsProps> = () => {
-	const handleClick = (e: React.MouseEvent<HTMLButtonElement>) => {
-		e.preventDefault();
-		e.stopPropagation();
-		const target = e.target as any;
-		console.log(target.dataset.id);
-	};
+	const { handleModal } = useModalContext();
+
 	return (
 		<DashboardButton.Group>
 			<DashboardButton
 				color='success'
 				direction='column'
 				id='recipe'
-				onClick={handleClick}>
+				onClick={() => handleModal(<AddRecipe />)}>
 				<DashboardButton.Icon>
 					<FontAwesomeIcon icon={['far', 'plus-square']} size='6x' />
 				</DashboardButton.Icon>
@@ -28,7 +26,7 @@ const AddingButtons: React.SFC<AddingButtonsProps> = () => {
 				color='success'
 				direction='column'
 				id='schedule'
-				onClick={handleClick}>
+				onClick={() => handleModal(<AddSchedule />)}>
 				<DashboardButton.Icon>
 					<FontAwesomeIcon icon={['far', 'plus-square']} size='6x' />
 				</DashboardButton.Icon>
@@ -39,7 +37,7 @@ const AddingButtons: React.SFC<AddingButtonsProps> = () => {
 				color='success'
 				direction='column'
 				id='shopping'
-				onClick={handleClick}>
+				onClick={() => handleModal(<AddShoppingList />)}>
 				<DashboardButton.Icon>
 					<FontAwesomeIcon icon={['far', 'plus-square']} size='6x' />
 				</DashboardButton.Icon>
