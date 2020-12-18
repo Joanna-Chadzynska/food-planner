@@ -3,8 +3,6 @@ import { Actions, ActionsExtra } from 'containers/Actions';
 import { ShoppingList } from 'models/interfaces/ShopList';
 import React from 'react';
 
-export interface ShoppingListItemProps {}
-
 const ShoppingListItem: React.SFC<ShoppingList> = ({ id, name, list }) => {
 	return (
 		<List.TableRow columnsLength={4}>
@@ -16,8 +14,8 @@ const ShoppingListItem: React.SFC<ShoppingList> = ({ id, name, list }) => {
 				))}
 			</List.TableBodyCol>
 			<List.TableBodyCol>
-				<Actions />
-				<ActionsExtra />
+				<Actions itemId={id} />
+				<ActionsExtra itemId={id} type='shopping-list' />
 			</List.TableBodyCol>
 		</List.TableRow>
 	);

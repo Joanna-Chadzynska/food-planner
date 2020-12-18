@@ -10,8 +10,8 @@ const RecipeDetails: React.SFC<Recipe> = ({ id, name, description }) => {
 			<List.TableBodyCol>{name}</List.TableBodyCol>
 			<List.TableBodyCol>{description}</List.TableBodyCol>
 			<List.TableBodyCol>
-				<Actions />
-				<ActionsExtra />
+				<Actions itemId={id} />
+				<ActionsExtra itemId={id} type='recipe' />
 			</List.TableBodyCol>
 		</List.TableRow>
 	);
