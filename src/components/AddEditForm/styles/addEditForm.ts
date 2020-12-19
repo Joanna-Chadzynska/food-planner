@@ -49,6 +49,13 @@ export const SubTitle = styled.h2`
 `;
 
 export const Text = styled.p``;
+export const Error = styled.p`
+	color: ${({ theme }) => theme.colors.trash};
+	font-size: 1em;
+	position: absolute;
+	bottom: 0;
+	left: 50%;
+`;
 
 export const Input = styled.input<InputProps>`
 	min-width: ${({ width }) => (width ? `${width}px` : '')};
@@ -150,6 +157,8 @@ export const Fieldset = styled.fieldset<FieldsetProps>`
 	margin-bottom: 1em;
 	width: 100%;
 
+	position: relative;
+
 	${({ hasButton }) =>
 		hasButton &&
 		`
@@ -159,6 +168,7 @@ export const Fieldset = styled.fieldset<FieldsetProps>`
 
 	${Textarea}, ${Input} {
 		padding: 0.5em;
+		position: relative;
 	}
 
 	@media screen and (min-width: 800px) {
@@ -172,5 +182,3 @@ export const Fieldset = styled.fieldset<FieldsetProps>`
     `}
 	}
 `;
-
-export const AddButton = styled.button``;

@@ -3,6 +3,7 @@ import React from 'react';
 import {
 	Button,
 	Container,
+	Error,
 	Fieldset,
 	Group,
 	GroupWrapper,
@@ -32,7 +33,7 @@ const AddEditForm: React.SFC<AddEditFormProps> & AddEditFormComposition = ({
 	...restProps
 }) => {
 	return (
-		<Container onSubmit={onSubmit} {...restProps}>
+		<Container onSubmit={onSubmit} noValidate {...restProps}>
 			{children}
 		</Container>
 	);
@@ -42,7 +43,7 @@ export const AddEditFormHeader: React.FC = ({ children, ...restProps }) => {
 	return (
 		<Header {...restProps}>
 			<Title>{children}</Title>
-			<Submit type='submit'>Zapisz i zamknij</Submit>
+			<Submit type='submit'>Zapisz</Submit>
 		</Header>
 	);
 };
@@ -115,6 +116,10 @@ export const AddEditFormGroup: React.FC = ({ children, ...restProps }) => (
 	<Group {...restProps}>{children}</Group>
 );
 
+export const AddEditFormError: React.FC = ({ children, ...restProps }) => (
+	<Error {...restProps}>{children}</Error>
+);
+
 export const AddEditFormGroupWrapper: React.FC = ({
 	children,
 	...restProps
@@ -129,7 +134,7 @@ export const AddEditFormButton: React.FC<ButtonProps> = ({
 	onClick,
 	...restProps
 }) => (
-	<Button onClick={onClick} {...restProps}>
+	<Button type='button' onClick={onClick} {...restProps}>
 		<FontAwesomeIcon icon={['fas', 'plus-square']} />
 	</Button>
 );
@@ -155,5 +160,6 @@ AddEditForm.Subtitle = AddEditFormSubTitle;
 AddEditForm.Button = AddEditFormButton;
 AddEditForm.OrderedList = AddEditFormOrderedList;
 AddEditForm.UnorderedList = AddEditFormUnorderedList;
+AddEditForm.Error = AddEditFormError;
 
 export default AddEditForm;

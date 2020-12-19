@@ -16,9 +16,9 @@ export const Inner = styled.table`
 	width: 100%;
 	margin: 1em 0;
 	table-layout: fixed;
-	@media screen and (min-width: 800px) {
+	/* @media screen and (min-width: 800px) {
 		table-layout: auto;
-	}
+	} */
 `;
 
 export const Title = styled.caption`
