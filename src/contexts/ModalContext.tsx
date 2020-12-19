@@ -7,9 +7,10 @@ export interface ModalProviderProps {}
 export const ModalContext: any = createContext({});
 
 const ModalProvider: React.SFC<ModalProviderProps> = ({ children }) => {
-	const { showModal, handleModal, modalContent } = useModal();
+	const { showModal, handleModal, modalContent, setShowModal } = useModal();
 	return (
-		<ModalContext.Provider value={{ showModal, handleModal, modalContent }}>
+		<ModalContext.Provider
+			value={{ showModal, handleModal, modalContent, setShowModal }}>
 			<Modal />
 			{children}
 		</ModalContext.Provider>
@@ -17,8 +18,10 @@ const ModalProvider: React.SFC<ModalProviderProps> = ({ children }) => {
 };
 
 export const useModalContext = () => {
-	const { showModal, handleModal, modalContent } = useContext(ModalContext);
-	return { showModal, handleModal, modalContent };
+	const { showModal, handleModal, modalContent, setShowModal } = useContext(
+		ModalContext
+	);
+	return { showModal, handleModal, modalContent, setShowModal };
 };
 
 export default ModalProvider;
