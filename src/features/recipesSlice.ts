@@ -9,6 +9,7 @@ const initialState: RecipesState = {
 		description: '',
 		steps: [],
 		ingredients: [],
+		id: 0,
 	},
 	loading: true,
 	error: null,
