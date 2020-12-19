@@ -1,10 +1,15 @@
 export interface Recipe {
-	id?: number;
+	id: number;
 	name: string;
 	description: string;
 	steps: string[];
+	step?: string;
+
 	ingredients: string[];
+	ingredient?: string;
 }
+
+export interface RecipeValidation {}
 
 export interface RecipesState {
 	recipes: Recipe[];
@@ -12,3 +17,12 @@ export interface RecipesState {
 	loading: boolean;
 	error: null;
 }
+
+export interface Values {
+	step: string;
+	ingredient: string;
+}
+
+export interface Step {}
+
+export interface Ingredient {}

@@ -70,6 +70,35 @@ export class HttpClient {
 	public async getRecipes(): Promise<Recipe[]> {
 		return this.getAllElements(this.RECIPES_ENDPOINT);
 	}
+	/**
+	 * Method post - add new recipe
+	 * @returns Recipe[]
+	 */
+
+	public async addRecipe(recipe: Recipe): Promise<Recipe> {
+		try {
+			const response = (await this.request.post(this.RECIPES_ENDPOINT, recipe))
+				.data;
+			return response;
+		} catch (error) {
+			return error;
+		}
+	}
+	/**
+	 * Method delete - remove recipe
+	 * @returns Recipe[]
+	 */
+
+	public async removeRecipe(id: number): Promise<Recipe> {
+		try {
+			const response = (
+				await this.request.delete(`${this.RECIPES_ENDPOINT}${id}`)
+			).data;
+			return response;
+		} catch (error) {
+			return error;
+		}
+	}
 
 	/**
 	 * Method get from API one recipe
