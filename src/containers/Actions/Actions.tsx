@@ -3,31 +3,38 @@ import { List } from 'components';
 import React from 'react';
 
 export interface ActionsProps {
-	itemId?: number;
-	callback?: () => void;
-	edit?: () => void;
-	delete?: () => void;
+	itemId: number | undefined;
+	editItem?: any;
+	removeItem: () => void;
 }
 
-const Actions: React.SFC<ActionsProps> = ({ itemId, callback }) => {
+const Actions: React.SFC<ActionsProps> = ({ itemId, removeItem, editItem }) => {
 	const handleItemActions = (
 		itemId?: number,
 		actionType?: string,
-		callback?: () => void
+		editItem?: any
 	) => {
+		if (actionType === 'delete') {
+			console.log('delete');
+			removeItem();
+		}
+
+		if (actionType === 'edit') {
+			console.log('edit');
+		}
 		console.log({ itemId });
-		console.log({ actionType });
+		window.location.reload();
 	};
 	return (
 		<List.ButtonsContainer>
 			<List.Button
-				onClick={() => handleItemActions(itemId, 'edit', callback)}
+				onClick={() => handleItemActions(itemId, 'edit')}
 				action='edit'>
 				<FontAwesomeIcon icon={['fas', 'edit']} />
 			</List.Button>
 
 			<List.Button
-				onClick={() => handleItemActions(itemId, 'delete', callback)}
+				onClick={() => handleItemActions(itemId, 'delete', editItem)}
 				action='delete'>
 				<FontAwesomeIcon icon={['far', 'trash-alt']} />
 			</List.Button>

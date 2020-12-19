@@ -35,7 +35,6 @@ const MainAppContainer: React.SFC = () => {
 		void importDataFromAPI();
 
 		return () => {};
-		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, []);
 
 	return (

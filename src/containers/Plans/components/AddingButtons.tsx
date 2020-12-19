@@ -7,7 +7,7 @@ import React from 'react';
 export interface AddingButtonsProps {}
 
 const AddingButtons: React.SFC<AddingButtonsProps> = () => {
-	const { handleModal } = useModalContext();
+	const { handleModal, showModal, setShowModal } = useModalContext();
 
 	return (
 		<DashboardButton.Group>
@@ -15,7 +15,11 @@ const AddingButtons: React.SFC<AddingButtonsProps> = () => {
 				color='success'
 				direction='column'
 				id='recipe'
-				onClick={() => handleModal(<AddRecipe />)}>
+				onClick={() =>
+					handleModal(
+						<AddRecipe showModal={showModal} setShowModal={setShowModal} />
+					)
+				}>
 				<DashboardButton.Icon>
 					<FontAwesomeIcon icon={['far', 'plus-square']} size='6x' />
 				</DashboardButton.Icon>

@@ -16,7 +16,7 @@ const ScheduleDetails: React.SFC<Schedule> = ({
 			<List.TableBodyCol>{description}</List.TableBodyCol>
 			<List.TableBodyCol>{weekNumber}</List.TableBodyCol>
 			<List.TableBodyCol>
-				<Actions itemId={id} />
+				<Actions removeItem={() => {}} itemId={id} />
 				<ActionsExtra itemId={id} type='schedule' />
 			</List.TableBodyCol>
 		</List.TableRow>

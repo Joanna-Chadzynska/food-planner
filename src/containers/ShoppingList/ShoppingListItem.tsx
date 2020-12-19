@@ -14,7 +14,7 @@ const ShoppingListItem: React.SFC<ShoppingList> = ({ id, name, list }) => {
 				))}
 			</List.TableBodyCol>
 			<List.TableBodyCol>
-				<Actions itemId={id} />
+				<Actions removeItem={() => {}} itemId={id} />
 				<ActionsExtra itemId={id} type='shopping-list' />
 			</List.TableBodyCol>
 		</List.TableRow>

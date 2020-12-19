@@ -1,9 +1,12 @@
+import { RootState } from 'app/store';
 import { AddEditForm } from 'components';
 import React from 'react';
+import { useSelector } from 'react-redux';
 
 export interface AddScheduleProps {}
 
 const AddSchedule: React.SFC<AddScheduleProps> = () => {
+	const { schedule } = useSelector((state: RootState) => state.schedules);
 	const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
 		e.preventDefault();
 	};
