@@ -23,7 +23,7 @@ export interface ScheduleWeek {
 }
 
 export interface Meal {
-	recipeId: number;
+	recipeId: number | null | undefined;
 	name: string;
 }
 
