@@ -1,11 +1,8 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { BlobProvider } from '@react-pdf/renderer';
 import { List } from 'components';
 import useHttpClient from 'hooks/useHttpClient';
 import { Recipe } from 'models/interfaces/Recipe';
 import React, { useCallback, useEffect, useState } from 'react';
-import RecipePdf from './RecipePdf';
-import Test from './Test';
 
 export interface ActionsExtraProps {
 	itemId?: number;
@@ -41,9 +38,9 @@ const ActionsExtra: React.SFC<ActionsExtraProps> = ({ itemId, type }) => {
 	return (
 		<List.ButtonsContainer>
 			<List.Button onClick={() => handleExtraAction('copy')} action='copy'>
-				<FontAwesomeIcon icon={['far', 'clone']} />
+				<FontAwesomeIcon icon={['far', 'clone']} size='2x' />
 			</List.Button>
-
+			{/* 
 			<BlobProvider
 				document={
 					type === 'recipe' ? (
@@ -54,13 +51,13 @@ const ActionsExtra: React.SFC<ActionsExtraProps> = ({ itemId, type }) => {
 				}>
 				{({ url }) => (
 					<List.Button onClick={() => openPdf(url)} action='pdf'>
-						<FontAwesomeIcon icon={['far', 'file-pdf']} />
+						<FontAwesomeIcon icon={['far', 'file-pdf']} size='2x' />
 					</List.Button>
 				)}
-			</BlobProvider>
+			</BlobProvider> */}
 
 			<List.Button onClick={() => handleExtraAction('print')} action='print'>
-				<FontAwesomeIcon icon={['fas', 'print']} />
+				<FontAwesomeIcon icon={['fas', 'print']} size='2x' />
 			</List.Button>
 		</List.ButtonsContainer>
 	);

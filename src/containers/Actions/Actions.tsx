@@ -4,39 +4,29 @@ import React from 'react';
 
 export interface ActionsProps {
 	itemId: number | undefined;
-	editItem?: any;
+	editItem: () => void;
 	removeItem: () => void;
 }
 
 const Actions: React.SFC<ActionsProps> = ({ itemId, removeItem, editItem }) => {
-	const handleItemActions = (
-		itemId?: number,
-		actionType?: string,
-		editItem?: any
-	) => {
+	const handleItemActions = (actionType?: string) => {
 		if (actionType === 'delete') {
-			console.log('delete');
 			removeItem();
+			window.location.reload();
 		}
 
 		if (actionType === 'edit') {
-			console.log('edit');
+			editItem();
 		}
-		console.log({ itemId });
-		window.location.reload();
 	};
 	return (
 		<List.ButtonsContainer>
-			<List.Button
-				onClick={() => handleItemActions(itemId, 'edit')}
-				action='edit'>
-				<FontAwesomeIcon icon={['fas', 'edit']} />
+			<List.Button onClick={() => handleItemActions('edit')} action='edit'>
+				<FontAwesomeIcon icon={['fas', 'edit']} size='2x' />
 			</List.Button>
 
-			<List.Button
-				onClick={() => handleItemActions(itemId, 'delete', editItem)}
-				action='delete'>
-				<FontAwesomeIcon icon={['far', 'trash-alt']} />
+			<List.Button onClick={() => handleItemActions('delete')} action='delete'>
+				<FontAwesomeIcon icon={['far', 'trash-alt']} size='2x' />
 			</List.Button>
 		</List.ButtonsContainer>
 	);
