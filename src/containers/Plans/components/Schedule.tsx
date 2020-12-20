@@ -63,11 +63,11 @@ const ScheduleItem: React.SFC<Schedule> = ({
 			},
 		];
 
-		let breakfast: number[] = [];
-		let lunch: number[] = [];
-		let soup: number[] = [];
-		let dinner: number[] = [];
-		let supper: number[] = [];
+		let breakfast: any[] = [];
+		let lunch: any[] = [];
+		let soup: any[] = [];
+		let dinner: any[] = [];
+		let supper: any[] = [];
 
 		for (let [, value] of Object.entries(schedule)) {
 			breakfast = [...breakfast, value.plan[0].recipeId];
