@@ -99,6 +99,21 @@ export class HttpClient {
 			return error;
 		}
 	}
+	/**
+	 * Method patch - update recipe
+	 * @returns Recipe[]
+	 */
+
+	public async updateRecipe(id: number, recipe: Recipe): Promise<Recipe> {
+		try {
+			const response = (
+				await this.request.patch(`${this.RECIPES_ENDPOINT}${id}`, recipe)
+			).data;
+			return response;
+		} catch (error) {
+			return error;
+		}
+	}
 
 	/**
 	 * Method get from API one recipe
