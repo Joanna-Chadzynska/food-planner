@@ -5,6 +5,7 @@ import { useHttpClient } from 'hooks';
 import { Schedule } from 'models/interfaces/Schedule';
 import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import validateScheduleForm from './../../../utils/validateScheduleForm';
 import { SelectTableForm } from './components';
 
 export interface AddScheduleProps {}
@@ -14,14 +15,12 @@ const AddSchedule: React.SFC<AddScheduleProps> = () => {
 	const dispatch = useDispatch();
 	const client = useHttpClient();
 	const [errors, setErrors] = useState<Schedule>({} as Schedule);
-	const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
-		e.preventDefault();
-	};
 
 	const handleChange = (
 		e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
 	) => {
 		const { name, value } = e.target;
+
 		dispatch(
 			addSchedule({
 				...schedule,
@@ -29,6 +28,17 @@ const AddSchedule: React.SFC<AddScheduleProps> = () => {
 			})
 		);
 	};
+
+	const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+		e.preventDefault();
+		setErrors(validateScheduleForm(schedule));
+
+		if (Object.keys(errors).length === 0) {
+			console.log('dodano plan');
+		}
+	};
+
+	console.log(errors);
 
 	return (
 		<AddEditForm onSubmit={handleSubmit}>
@@ -43,6 +53,7 @@ const AddSchedule: React.SFC<AddScheduleProps> = () => {
 					onChange={handleChange}
 					type='text'
 				/>
+				{errors && <AddEditForm.Error>{errors.name}</AddEditForm.Error>}
 			</AddEditForm.Fieldset>
 
 			<AddEditForm.Fieldset>
@@ -53,6 +64,7 @@ const AddSchedule: React.SFC<AddScheduleProps> = () => {
 					value={schedule.description}
 					onChange={handleChange}
 				/>
+				{errors && <AddEditForm.Error>{errors.description}</AddEditForm.Error>}
 			</AddEditForm.Fieldset>
 
 			<AddEditForm.Fieldset>
@@ -68,6 +80,7 @@ const AddSchedule: React.SFC<AddScheduleProps> = () => {
 					min='1'
 					max='52'
 				/>
+				{errors && <AddEditForm.Error>{errors.weekNumber}</AddEditForm.Error>}
 			</AddEditForm.Fieldset>
 
 			<SelectTableForm />
