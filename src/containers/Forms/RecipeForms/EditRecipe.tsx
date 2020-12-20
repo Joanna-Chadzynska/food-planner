@@ -1,32 +1,34 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import { RootState } from 'app/store';
 import { AddEditForm } from 'components';
-import { addRecipe } from 'features/recipesSlice';
+import { addRecipe, importRecipeById } from 'features/recipesSlice';
 import { useHttpClient } from 'hooks';
 import { Recipe } from 'models/interfaces/Recipe';
-import React, { useState } from 'react';
+import * as React from 'react';
+import { useCallback, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { validateRecipesForm } from 'utils';
 import { Ingredients, Steps } from './components';
 
-export interface AddRecipeProps {
-	showModal?: boolean;
-	setShowModal?: any;
+export interface EditRecipeProps {
+	id: number;
 }
 
-export interface ErrorProps {
-	description: string;
-	ingredients: string;
-	ingredient: string;
-	name: string;
-	steps: string;
-	step: string;
-}
-
-const AddRecipe: React.SFC<AddRecipeProps> = ({ setShowModal }) => {
+const EditRecipe: React.SFC<EditRecipeProps> = ({ id }) => {
 	const { recipe } = useSelector((state: RootState) => state.recipes);
 	const dispatch = useDispatch();
 	const client = useHttpClient();
-	const [errors, setErrors] = useState<Recipe>({} as Recipe);
+	const [errors, setErrors] = React.useState<Recipe>({} as Recipe);
+
+	const fetchRecipeById = useCallback(async (id: number): Promise<void> => {
+		const resp = await client.getRecipeById(id);
+		dispatch(importRecipeById(resp));
+	}, []);
+
+	useEffect(() => {
+		fetchRecipeById(id);
+		return () => {};
+	}, [id]);
 
 	const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
 		e.preventDefault();
@@ -36,9 +38,9 @@ const AddRecipe: React.SFC<AddRecipeProps> = ({ setShowModal }) => {
 			Object.keys(errorsObj).length === 0 &&
 			Object.keys(errors).length === 0
 		) {
-			client.addRecipe(recipe);
+			client.updateRecipe(id, recipe);
 			window.location.reload();
-			setShowModal(false);
+			// setShowModal(false);
 		} else {
 			setErrors(errorsObj);
 		}
@@ -96,4 +98,4 @@ const AddRecipe: React.SFC<AddRecipeProps> = ({ setShowModal }) => {
 	);
 };
 
-export default AddRecipe;
+export default EditRecipe;
