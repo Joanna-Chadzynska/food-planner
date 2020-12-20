@@ -1,7 +1,15 @@
 import styled from 'styled-components/macro';
 
 export interface ButtonRProps {
-	action?: 'add' | 'edit' | 'delete' | 'copy' | 'pdf' | 'print';
+	action?:
+		| 'add'
+		| 'edit'
+		| 'delete'
+		| 'copy'
+		| 'pdf'
+		| 'print'
+		| 'cancel'
+		| 'save';
 }
 
 export interface TableProps {
@@ -37,10 +45,12 @@ export const Button = styled.button<ButtonRProps>`
 	color: ${({ action, theme }) => {
 		switch (action) {
 			case 'add':
+			case 'save':
 				return `${theme.colors.success}`;
 			case 'edit':
 				return `${theme.colors.warning}`;
 			case 'delete':
+			case 'cancel':
 				return `${theme.colors.trash}`;
 			default:
 				return `${theme.colors.txtRow_extend}`;
@@ -59,10 +69,6 @@ export const ButtonsContainer = styled.div`
 	align-items: center;
 	gap: 0 10px;
 	padding: 0.3em 0;
-
-	${Button} svg {
-		font-size: 1.75em;
-	}
 `;
 
 export const Table = styled.table`

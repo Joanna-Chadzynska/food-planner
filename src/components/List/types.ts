@@ -15,7 +15,15 @@ export interface ListComposition {
 
 export interface ButtonProps {
 	onClick?: () => void;
-	action?: 'add' | 'edit' | 'delete' | 'copy' | 'pdf' | 'print';
+	action?:
+		| 'add'
+		| 'edit'
+		| 'delete'
+		| 'copy'
+		| 'pdf'
+		| 'print'
+		| 'cancel'
+		| 'save';
 }
 
 export interface TableProps {

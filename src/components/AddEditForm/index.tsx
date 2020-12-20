@@ -9,10 +9,13 @@ import {
 	GroupWrapper,
 	Header,
 	Input,
+	Item,
+	ItemInner,
 	Label,
 	OrderedList,
 	Submit,
 	SubTitle,
+	Text,
 	Textarea,
 	Title,
 	UnorderedList,
@@ -43,7 +46,7 @@ export const AddEditFormHeader: React.FC = ({ children, ...restProps }) => {
 	return (
 		<Header {...restProps}>
 			<Title>{children}</Title>
-			<Submit type='submit'>Zapisz</Submit>
+			<Submit type='submit'>Zapisz i zamknij</Submit>
 		</Header>
 	);
 };
@@ -149,6 +152,16 @@ export const AddEditFormUnorderedList: React.FC = ({
 	...restProps
 }) => <UnorderedList {...restProps}>{children}</UnorderedList>;
 
+export const AddEditFormItem: React.FC = ({ children, ...restProps }) => (
+	<Item {...restProps}>
+		<ItemInner>{children}</ItemInner>
+	</Item>
+);
+
+export const AddEditFormText: React.FC = ({ children, ...restProps }) => (
+	<Text {...restProps}>{children}</Text>
+);
+
 AddEditForm.Header = AddEditFormHeader;
 AddEditForm.Fieldset = AddEditFormFieldset;
 AddEditForm.Input = AddEditFormInput;
@@ -161,5 +174,7 @@ AddEditForm.Button = AddEditFormButton;
 AddEditForm.OrderedList = AddEditFormOrderedList;
 AddEditForm.UnorderedList = AddEditFormUnorderedList;
 AddEditForm.Error = AddEditFormError;
+AddEditForm.Item = AddEditFormItem;
+AddEditForm.Text = AddEditFormText;
 
 export default AddEditForm;

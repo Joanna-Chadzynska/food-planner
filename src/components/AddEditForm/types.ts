@@ -48,5 +48,7 @@ export interface AddEditFormComposition {
 	Button: React.FC<ButtonProps>;
 	OrderedList: React.FC;
 	UnorderedList: React.FC;
+	Item: React.FC;
+	Text: React.FC;
 	Error: React.FC;
 }

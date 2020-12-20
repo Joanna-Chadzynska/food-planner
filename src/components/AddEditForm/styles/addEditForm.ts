@@ -48,7 +48,11 @@ export const SubTitle = styled.h2`
 	align-self: start;
 `;
 
-export const Text = styled.p``;
+export const Text = styled.p`
+	word-wrap: break-word;
+	max-width: 80%;
+`;
+
 export const Error = styled.p`
 	color: ${({ theme }) => theme.colors.trash};
 	font-size: 1em;
@@ -101,15 +105,40 @@ export const Button = styled.button`
 	}
 `;
 
+export const Item = styled.li`
+	display: flex;
+	align-items: center;
+	gap: 1em;
+	width: 100%;
+`;
+
+export const ItemInner = styled.div`
+	display: inline-flex;
+	gap: 1em;
+	align-items: center;
+	max-width: 90%;
+`;
+
 export const OrderedList = styled.ol`
-	li {
+	${Item} {
 		list-style-type: decimal;
+		&::before {
+			content: counter(list-item) '. ';
+			counter-increment: list-item;
+		}
 	}
 `;
 
 export const UnorderedList = styled.ul`
-	li {
+	${Item} {
 		list-style-type: disc;
+		&::before {
+			background-color: #000000;
+			border-radius: 50%;
+			content: '';
+			width: 5px;
+			height: 5px;
+		}
 	}
 `;
 
@@ -127,9 +156,6 @@ export const Group = styled.div`
 	}
 
 	${OrderedList}, ${UnorderedList} {
-		li {
-			list-style-position: inside;
-		}
 		height: 110px;
 		overflow-y: auto;
 		@media screen and (min-width: 800px) {
