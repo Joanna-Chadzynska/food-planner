@@ -3,13 +3,28 @@ export interface Schedule {
 	name: string;
 	description: string;
 	weekNumber: number;
-	monday: number[];
-	tuesday: number[];
-	wednesday: number[];
-	thursday: number[];
-	friday: number[];
-	saturday: number[];
-	sunday: number[];
+	monday: Meal[];
+	tuesday: Meal[];
+	wednesday: Meal[];
+	thursday: Meal[];
+	friday: Meal[];
+	saturday: Meal[];
+	sunday: Meal[];
+}
+
+export interface ScheduleWeek {
+	monday: Meal[];
+	tuesday: Meal[];
+	wednesday: Meal[];
+	thursday: Meal[];
+	friday: Meal[];
+	saturday: Meal[];
+	sunday: Meal[];
+}
+
+export interface Meal {
+	recipeId: number;
+	name: string;
 }
 
 export interface SchedulesState {
