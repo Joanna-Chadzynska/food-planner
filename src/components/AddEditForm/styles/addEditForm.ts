@@ -11,7 +11,7 @@ export interface FieldsetProps {
 export const Container = styled.form`
 	height: 100%;
 	display: grid;
-	grid-template-rows: auto auto auto 1fr;
+	grid-template-rows: auto auto auto auto 1fr;
 `;
 
 export const Header = styled.div`
@@ -63,6 +63,11 @@ export const Error = styled.p`
 
 export const Input = styled.input<InputProps>`
 	min-width: ${({ width }) => (width ? `${width}px` : '')};
+
+	&[type='number'] {
+		height: 50px;
+		width: 50px;
+	}
 
 	@media screen and(min-width: 800px) {
 		width: 100%;

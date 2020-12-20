@@ -14,6 +14,8 @@ export interface InputProps {
 	id?: string;
 	onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
 	width?: string;
+	min?: string;
+	max?: string;
 }
 
 export interface TextareaProps {

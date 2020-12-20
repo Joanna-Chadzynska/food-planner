@@ -69,6 +69,8 @@ export const AddEditFormInput: React.FC<InputProps> = ({
 	id,
 	width,
 	placeholder,
+	min,
+	max,
 	...restProps
 }) => (
 	<Input
@@ -79,6 +81,8 @@ export const AddEditFormInput: React.FC<InputProps> = ({
 		placeholder={placeholder}
 		type={type}
 		width={width}
+		min={min}
+		max={max}
 		{...restProps}
 	/>
 );

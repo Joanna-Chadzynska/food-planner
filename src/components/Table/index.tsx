@@ -11,7 +11,13 @@ import {
 	Row,
 	Title,
 } from './styles/table';
-import { ButtonProps, TableComposition, TableProps } from './types';
+import {
+	ButtonProps,
+	ColProps,
+	RowProps,
+	TableComposition,
+	TableProps,
+} from './types';
 
 const Table: React.SFC<TableProps> & TableComposition = ({
 	children,
@@ -36,16 +42,35 @@ export const TableBody: React.FC = ({ children, ...restProps }) => (
 	<Body {...restProps}>{children}</Body>
 );
 
-export const TableRow: React.FC = ({ children, ...restProps }) => (
-	<Row {...restProps}>{children}</Row>
+export const TableRow: React.FC<RowProps> = ({
+	dataIdRow,
+	children,
+	...restProps
+}) => (
+	<Row data-row={dataIdRow} {...restProps}>
+		{children}
+	</Row>
 );
 
-export const TableColHeader: React.FC = ({ children, ...restProps }) => (
-	<ColHeader {...restProps}>{children}</ColHeader>
+export const TableColHeader: React.FC<ColProps> = ({
+	children,
+	dataIdCol,
+	scope,
+	...restProps
+}) => (
+	<ColHeader scope={scope} data-col={dataIdCol} {...restProps}>
+		{children}
+	</ColHeader>
 );
 
-export const TableColBody: React.FC = ({ children, ...restProps }) => (
-	<ColBody {...restProps}>{children}</ColBody>
+export const TableColBody: React.FC<ColProps> = ({
+	children,
+	dataIdCol,
+	...restProps
+}) => (
+	<ColBody data-col={dataIdCol} {...restProps}>
+		{children}
+	</ColBody>
 );
 
 export const TableButton: React.FC<ButtonProps> = ({
