@@ -4,7 +4,61 @@ import { Schedule, SchedulesState } from 'models/interfaces/Schedule';
 
 const initialState: SchedulesState = {
 	schedules: [],
-	schedule: {} as Schedule,
+	schedule: {
+		id: 0,
+		name: '',
+		description: '',
+		weekNumber: 1,
+		monday: [
+			{ name: 'breakfast', recipeId: 0 },
+			{ name: 'lunch', recipeId: 0 },
+			{ name: 'soup', recipeId: 0 },
+			{ name: 'dinner', recipeId: 0 },
+			{ name: 'supper', recipeId: 0 },
+		],
+		tuesday: [
+			{ name: 'breakfast', recipeId: 0 },
+			{ name: 'lunch', recipeId: 0 },
+			{ name: 'soup', recipeId: 0 },
+			{ name: 'dinner', recipeId: 0 },
+			{ name: 'supper', recipeId: 0 },
+		],
+		wednesday: [
+			{ name: 'breakfast', recipeId: 0 },
+			{ name: 'lunch', recipeId: 0 },
+			{ name: 'soup', recipeId: 0 },
+			{ name: 'dinner', recipeId: 0 },
+			{ name: 'supper', recipeId: 0 },
+		],
+		thursday: [
+			{ name: 'breakfast', recipeId: 0 },
+			{ name: 'lunch', recipeId: 0 },
+			{ name: 'soup', recipeId: 0 },
+			{ name: 'dinner', recipeId: 0 },
+			{ name: 'supper', recipeId: 0 },
+		],
+		friday: [
+			{ name: 'breakfast', recipeId: 0 },
+			{ name: 'lunch', recipeId: 0 },
+			{ name: 'soup', recipeId: 0 },
+			{ name: 'dinner', recipeId: 0 },
+			{ name: 'supper', recipeId: 0 },
+		],
+		saturday: [
+			{ name: 'breakfast', recipeId: 0 },
+			{ name: 'lunch', recipeId: 0 },
+			{ name: 'soup', recipeId: 0 },
+			{ name: 'dinner', recipeId: 0 },
+			{ name: 'supper', recipeId: 0 },
+		],
+		sunday: [
+			{ name: 'breakfast', recipeId: 0 },
+			{ name: 'lunch', recipeId: 0 },
+			{ name: 'soup', recipeId: 0 },
+			{ name: 'dinner', recipeId: 0 },
+			{ name: 'supper', recipeId: 0 },
+		],
+	},
 	loading: true,
 	error: null,
 };
@@ -23,11 +77,42 @@ export const schedulesSlice = createSlice({
 				(item) => item.id === payload.id
 			);
 		},
-		incrementByAmount: (state, action: PayloadAction<number>) => {},
+		importScheduleById: (state, { payload }: PayloadAction<Schedule>) => {
+			state.schedule = payload;
+		},
+		addSchedule: (state, { payload }: PayloadAction<Schedule>) => {
+			const {
+				name,
+				description,
+				weekNumber,
+				monday,
+				tuesday,
+				wednesday,
+				thursday,
+				friday,
+				saturday,
+				sunday,
+			} = payload;
+			state.schedule.name = name;
+			state.schedule.description = description;
+			state.schedule.weekNumber = weekNumber;
+			state.schedule.monday = monday;
+			state.schedule.tuesday = tuesday;
+			state.schedule.wednesday = wednesday;
+			state.schedule.thursday = thursday;
+			state.schedule.friday = friday;
+			state.schedule.saturday = saturday;
+			state.schedule.sunday = sunday;
+		},
 	},
 });
 
-export const { importSchedules, filterSchedulesById } = schedulesSlice.actions;
+export const {
+	importSchedules,
+	filterSchedulesById,
+	importScheduleById,
+	addSchedule,
+} = schedulesSlice.actions;
 
 export const selectSchedules = (state: RootState) => state.schedules.schedules;
 export const selectSchedule = (state: RootState) => state.schedules.schedule;
