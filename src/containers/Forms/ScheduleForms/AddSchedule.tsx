@@ -1,19 +1,34 @@
 import { RootState } from 'app/store';
 import { AddEditForm } from 'components';
-import React from 'react';
-import { useSelector } from 'react-redux';
+import { addSchedule } from 'features/schedulesSlice';
+import { useHttpClient } from 'hooks';
+import { Schedule } from 'models/interfaces/Schedule';
+import React, { useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { SelectTableForm } from './components';
 
 export interface AddScheduleProps {}
 
 const AddSchedule: React.SFC<AddScheduleProps> = () => {
 	const { schedule } = useSelector((state: RootState) => state.schedules);
+	const dispatch = useDispatch();
+	const client = useHttpClient();
+	const [errors, setErrors] = useState<Schedule>({} as Schedule);
 	const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
 		e.preventDefault();
 	};
 
 	const handleChange = (
 		e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
-	) => {};
+	) => {
+		const { name, value } = e.target;
+		dispatch(
+			addSchedule({
+				...schedule,
+				[name]: value,
+			})
+		);
+	};
 
 	return (
 		<AddEditForm onSubmit={handleSubmit}>
@@ -24,7 +39,7 @@ const AddSchedule: React.SFC<AddScheduleProps> = () => {
 				<AddEditForm.Input
 					id='name'
 					name='name'
-					value=''
+					value={schedule.name}
 					onChange={handleChange}
 					type='text'
 				/>
@@ -35,7 +50,7 @@ const AddSchedule: React.SFC<AddScheduleProps> = () => {
 				<AddEditForm.Textarea
 					id='description'
 					name='description'
-					value=''
+					value={schedule.description}
 					onChange={handleChange}
 				/>
 			</AddEditForm.Fieldset>
@@ -45,13 +60,17 @@ const AddSchedule: React.SFC<AddScheduleProps> = () => {
 					Numer tygodnia
 				</AddEditForm.Label>
 				<AddEditForm.Input
-					id='description'
-					name='description'
-					value=''
+					id='weekNumber'
+					name='weekNumber'
+					value={schedule.weekNumber}
 					onChange={handleChange}
 					type='number'
+					min='1'
+					max='52'
 				/>
 			</AddEditForm.Fieldset>
+
+			<SelectTableForm />
 		</AddEditForm>
 	);
 };
