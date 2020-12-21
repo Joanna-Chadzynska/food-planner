@@ -1,15 +1,19 @@
-/* eslint-disable react-hooks/exhaustive-deps */
 import { Table } from 'components';
 import { Schedule } from 'models/interfaces/Schedule';
 import React, { useCallback, useEffect, useState } from 'react';
 import Recipe from './Recipe';
 
 export interface Recipes {
-	breakfast: number[];
-	lunch: number[];
-	soup: number[];
-	dinner: number[];
-	supper: number[];
+	breakfast: Day[];
+	lunch: Day[];
+	soup: Day[];
+	dinner: Day[];
+	supper: Day[];
+}
+
+export interface Day {
+	recipeId: number | undefined;
+	day: string;
 }
 
 const ScheduleItem: React.SFC<Schedule> = ({
@@ -63,33 +67,54 @@ const ScheduleItem: React.SFC<Schedule> = ({
 			},
 		];
 
-		let breakfast: any[] = [];
-		let lunch: any[] = [];
-		let soup: any[] = [];
-		let dinner: any[] = [];
-		let supper: any[] = [];
-
 		for (let [, value] of Object.entries(schedule)) {
-			breakfast = [...breakfast, value.plan[0].recipeId];
-			lunch = [...lunch, value.plan[1].recipeId];
-			soup = [...soup, value.plan[2].recipeId];
-			dinner = [...dinner, value.plan[3].recipeId];
-			supper = [...supper, value.plan[4].recipeId];
+			recipes.breakfast = [
+				...recipes.breakfast,
+				{ day: value.day, recipeId: value.plan[0].recipeId },
+			];
+
+			recipes.lunch = [
+				...recipes.lunch,
+				{ day: value.day, recipeId: value.plan[1].recipeId },
+			];
+
+			recipes.soup = [
+				...recipes.soup,
+				{ day: value.day, recipeId: value.plan[2].recipeId },
+			];
+
+			recipes.dinner = [
+				...recipes.dinner,
+				{ day: value.day, recipeId: value.plan[3].recipeId },
+			];
+
+			recipes.supper = [
+				...recipes.supper,
+				{ day: value.day, recipeId: value.plan[4].recipeId },
+			];
 		}
 
 		setRecipes({
 			...recipes,
-			breakfast,
-			lunch,
-			soup,
-			dinner,
-			supper,
+			breakfast: recipes.breakfast,
+			lunch: recipes.lunch,
+			soup: recipes.soup,
+			dinner: recipes.dinner,
+			supper: recipes.supper,
 		});
 	}, [recipes, monday, tuesday, wednesday, thursday, friday, saturday, sunday]);
 
 	useEffect(() => {
 		addRecipes();
-		return () => {};
+		return () => {
+			setRecipes({
+				breakfast: [],
+				lunch: [],
+				soup: [],
+				dinner: [],
+				supper: [],
+			});
+		};
 	}, []);
 
 	return (
@@ -97,13 +122,13 @@ const ScheduleItem: React.SFC<Schedule> = ({
 			<Table.Title>Twój plan na {weekNumber} tydzień: </Table.Title>
 			<Table.Header>
 				<Table.Row>
-					<Table.ColHeader>Poniedziałek</Table.ColHeader>
-					<Table.ColHeader>Wtorek</Table.ColHeader>
-					<Table.ColHeader>Środa</Table.ColHeader>
-					<Table.ColHeader>Czwartek</Table.ColHeader>
-					<Table.ColHeader>Piątek</Table.ColHeader>
-					<Table.ColHeader>Sobota</Table.ColHeader>
-					<Table.ColHeader>Niedziela</Table.ColHeader>
+					<Table.ColHeader scope='col'>Poniedziałek</Table.ColHeader>
+					<Table.ColHeader scope='col'>Wtorek</Table.ColHeader>
+					<Table.ColHeader scope='col'>Środa</Table.ColHeader>
+					<Table.ColHeader scope='col'>Czwartek</Table.ColHeader>
+					<Table.ColHeader scope='col'>Piątek</Table.ColHeader>
+					<Table.ColHeader scope='col'>Sobota</Table.ColHeader>
+					<Table.ColHeader scope='col'>Niedziela</Table.ColHeader>
 				</Table.Row>
 			</Table.Header>
 			<Table.Body>

@@ -21,7 +21,7 @@ const AddingButtons: React.SFC<AddingButtonsProps> = () => {
 					)
 				}>
 				<DashboardButton.Icon>
-					<FontAwesomeIcon icon={['far', 'plus-square']} size='6x' />
+					<FontAwesomeIcon icon={['far', 'plus-square']} size='5x' />
 				</DashboardButton.Icon>
 				<DashboardButton.Text>przepis</DashboardButton.Text>
 			</DashboardButton>
@@ -32,7 +32,7 @@ const AddingButtons: React.SFC<AddingButtonsProps> = () => {
 				id='schedule'
 				onClick={() => handleModal(<AddSchedule />)}>
 				<DashboardButton.Icon>
-					<FontAwesomeIcon icon={['far', 'plus-square']} size='6x' />
+					<FontAwesomeIcon icon={['far', 'plus-square']} size='5x' />
 				</DashboardButton.Icon>
 				<DashboardButton.Text>plan</DashboardButton.Text>
 			</DashboardButton>
@@ -43,7 +43,7 @@ const AddingButtons: React.SFC<AddingButtonsProps> = () => {
 				id='shopping'
 				onClick={() => handleModal(<AddShoppingList />)}>
 				<DashboardButton.Icon>
-					<FontAwesomeIcon icon={['far', 'plus-square']} size='6x' />
+					<FontAwesomeIcon icon={['far', 'plus-square']} size='5x' />
 				</DashboardButton.Icon>
 				<DashboardButton.Text>zakupy</DashboardButton.Text>
 			</DashboardButton>

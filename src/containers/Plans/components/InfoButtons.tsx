@@ -20,7 +20,7 @@ const InfoButtons: React.SFC = () => {
 				id='recipe-counter'
 				onClick={handleClick}>
 				<DashboardButton.Icon>
-					<FontAwesomeIcon icon={['fas', 'info-circle']} size='3x' />
+					<FontAwesomeIcon icon={['fas', 'info-circle']} size='2x' />
 				</DashboardButton.Icon>
 				<DashboardButton.Text>
 					Masz już {recipes.length} przepisów, nieźle!
@@ -36,7 +36,7 @@ const InfoButtons: React.SFC = () => {
 				id='add-plan'
 				onClick={handleClick}>
 				<DashboardButton.Icon>
-					<FontAwesomeIcon icon={['fas', 'exclamation-circle']} size='3x' />
+					<FontAwesomeIcon icon={['fas', 'exclamation-circle']} size='2x' />
 				</DashboardButton.Icon>
 				<DashboardButton.Text>Pamiętaj, aby dodać plan!</DashboardButton.Text>
 				<DashboardButton.Close>
@@ -50,7 +50,7 @@ const InfoButtons: React.SFC = () => {
 				id='hello'
 				onClick={handleClick}>
 				<DashboardButton.Icon>
-					<FontAwesomeIcon icon={['fas', 'check-circle']} size='3x' />
+					<FontAwesomeIcon icon={['fas', 'check-circle']} size='2x' />
 				</DashboardButton.Icon>
 				<DashboardButton.Text>
 					Świetnie że jesteś! Udanego planowania i smacznego! :)
