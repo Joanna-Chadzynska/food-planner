@@ -20,15 +20,22 @@ export const Group = styled.div<GroupProps>`
 	display: flex;
 	gap: 2em;
 	flex-direction: ${({ direction }) => direction && direction};
+
+	min-width: 100%;
 `;
 
 export const GroupWrapper = styled.div`
 	display: grid;
 	grid-template-rows: auto 1fr;
-	grid-gap: 2em;
+	grid-template-columns: 1fr;
+	row-gap: 2em;
+	flex: 0 0 auto;
+	max-width: 100%;
 
-	@media screen and (min-width: 800px) {
-		grid-template-columns: auto 1fr;
+	@media screen and (min-width: 1024px) {
+		grid-template-columns: 1fr 1fr;
+		column-gap: 2em;
+		row-gap: 0;
 	}
 `;
 
@@ -36,7 +43,7 @@ export const Icon = styled.div``;
 
 export const Text = styled.p<ButtonProps>`
 	color: ${({ theme }) => theme.colors.success};
-	font-size: clamp(1rem, 5vw, 1.5rem);
+	font-size: clamp(0.875rem, 5vw, 1.25rem);
 	font-weight: 600;
 `;
 

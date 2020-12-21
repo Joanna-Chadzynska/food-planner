@@ -213,3 +213,57 @@ export const Fieldset = styled.fieldset<FieldsetProps>`
     `}
 	}
 `;
+
+export const Select = styled.select`
+	/* // A reset of styles, including removing the default dropdown arrow */
+	appearance: none;
+	/* // Additional resets for further consistency */
+	border: none;
+	padding-inline: 0.5em;
+	width: 100%;
+
+	&::-ms-expand {
+		display: none;
+	}
+`;
+
+export const Option = styled.option`
+	position: absolute;
+	/* background-color: DodgerBlue; */
+	top: 100%;
+	left: 0;
+	right: 0;
+	z-index: 99;
+`;
+
+export const SelectContainer = styled.div`
+	/*  */
+	border: 1px solid #777;
+	width: 100%;
+	min-width: 15ch;
+	max-width: 30ch;
+	cursor: pointer;
+	line-height: 1.1;
+	padding: 0.25em 0.5em;
+	font-size: 1.25rem;
+	border-radius: 0.25em;
+	background-color: #fff;
+	background-image: linear-gradient(to top, #f9f9f9, #fff 33%);
+
+	display: grid;
+	grid-template-areas: 'select';
+	align-items: center;
+
+	&::after {
+		content: '';
+		width: 0.8em;
+		height: 0.5em;
+		background-color: #777;
+		clip-path: polygon(100% 0%, 0 0%, 50% 100%);
+		justify-self: end;
+	}
+
+	${Select}, &::after {
+		grid-area: select;
+	}
+`;

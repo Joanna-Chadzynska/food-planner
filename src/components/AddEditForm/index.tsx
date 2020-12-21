@@ -12,7 +12,10 @@ import {
 	Item,
 	ItemInner,
 	Label,
+	Option,
 	OrderedList,
+	Select,
+	SelectContainer,
 	Submit,
 	SubTitle,
 	Text,
@@ -27,6 +30,8 @@ import {
 	FieldsetProps,
 	InputProps,
 	LabelProps,
+	OptionProps,
+	SelectProps,
 	TextareaProps,
 } from './types';
 
@@ -166,6 +171,31 @@ export const AddEditFormText: React.FC = ({ children, ...restProps }) => (
 	<Text {...restProps}>{children}</Text>
 );
 
+export const AddEditFormSelect: React.FC<SelectProps> = ({
+	children,
+	onChange,
+	value,
+	name,
+	...restProps
+}) => (
+	<SelectContainer>
+		<Select onChange={onChange} value={value} name={name} {...restProps}>
+			{children}
+		</Select>
+	</SelectContainer>
+);
+
+export const AddEditFormOption: React.FC<OptionProps> = ({
+	children,
+	optValue,
+
+	...restProps
+}) => (
+	<Option value={optValue} {...restProps}>
+		{children}
+	</Option>
+);
+
 AddEditForm.Header = AddEditFormHeader;
 AddEditForm.Fieldset = AddEditFormFieldset;
 AddEditForm.Input = AddEditFormInput;
@@ -180,5 +210,7 @@ AddEditForm.UnorderedList = AddEditFormUnorderedList;
 AddEditForm.Error = AddEditFormError;
 AddEditForm.Item = AddEditFormItem;
 AddEditForm.Text = AddEditFormText;
+AddEditForm.Select = AddEditFormSelect;
+AddEditForm.Option = AddEditFormOption;
 
 export default AddEditForm;

@@ -7,16 +7,15 @@ export interface LinkProps {
 }
 
 export const Container = styled.aside`
-	/* height: calc(100vh - 81px);
-     */
-
 	background-color: ${({ theme }) => theme.colors.sidebarNav};
 	color: #fff;
-	margin-top: clamp(60px, 5vw, 81px);
+	margin-top: clamp(60px, 5vw, 100px);
 	@media screen and (min-width: 800px) {
 		margin-top: 0;
 		height: 100%;
 	}
+
+	z-index: 998;
 `;
 
 export const Group = styled.ul`
@@ -33,11 +32,15 @@ export const Group = styled.ul`
 export const NavItem = styled(NavLink)<LinkProps>`
 	display: block;
 	color: #ffffff;
-	font-size: clamp(1.25rem, 5vw, 1.75rem);
-	padding: 1.5em 1.5em;
+	font-size: clamp(1.2rem, 5vw, 1.7rem);
+	padding: 1em;
 	transition: background-color 0.15s ease-in-out;
 	position: relative;
 	width: 100%;
+
+	&:first-of-type {
+		padding-top: 0.75em;
+	}
 	&:hover {
 		background-color: ${darken(0.04, '#5b605f')};
 
@@ -64,6 +67,13 @@ export const NavItem = styled(NavLink)<LinkProps>`
 			position: absolute;
 			left: 0;
 			top: 0;
+		}
+	}
+
+	@media screen and (min-width: 800px) {
+		padding: 1.5em 1.5em;
+		&:first-of-type {
+			padding-top: 1em;
 		}
 	}
 `;

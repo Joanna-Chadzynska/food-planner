@@ -28,29 +28,29 @@ export interface InnerProps {
 export const Container = styled.article`
 	background-image: url('https://trello-attachments.s3.amazonaws.com/5d78d22236ac1e52efe3c181/5d78d22236ac1e52efe3c1f4/500x500/6bcde9e9d7f8f1d3df331c5bcd9b2a4a/image.png');
 	background-size: contain;
-	min-height: calc(100vh - 150px);
 
+	width: calc(100vw - 250px);
+	width: 100%;
 	display: flex;
 	justify-content: center;
 	align-items: center;
 
 	@media screen and (min-width: 800px) {
 		margin-top: 0;
-		/* min-height: calc(100vh - 250px); */
 	}
 `;
 
 export const Group = styled.div`
 	display: grid;
-	grid-template-rows: 1fr minmax(450px, auto);
-	grid-template-columns: 1fr;
-	justify-content: center;
-	align-self: flex-start;
+	grid-template-rows: auto 1fr;
+	min-height: 100%;
+	gap: 1em;
 	padding: 1em;
 
 	@media screen and (min-width: 800px) {
 		padding: 1em 4em;
-		align-self: center;
+		grid-gap: 2em;
+		width: calc(100vw - 250px);
 	}
 `;
 

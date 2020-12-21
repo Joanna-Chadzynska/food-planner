@@ -19,8 +19,10 @@ export interface ButtonProps {
 export interface RowProps {
 	dataIdRow?: string;
 }
+
 export interface ColProps {
 	dataIdCol?: string;
 	dataIdRow?: string;
 	scope?: 'col' | 'row';
+	dataLabel?: string;
 }

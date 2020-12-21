@@ -3,32 +3,49 @@ import styled from 'styled-components/macro';
 export const Container = styled.div`
 	border: 1px dashed ${({ theme }) => theme.colors.txtRow_extend};
 	background-color: ${({ theme }) => theme.colors.backgroundScreens};
-	padding: 1em 1.2em;
 	position: relative;
-	display: flex;
-	flex-direction: column;
-	justify-content: space-between;
+	display: grid;
+	grid-template-rows: auto auto;
+	padding: 1em;
+	padding-bottom: 1em;
+	overflow: auto;
+
+	@media screen and (min-width: 800px) {
+		height: 95%;
+	}
 `;
 
 export const Inner = styled.table`
 	border: none;
 	border-collapse: collapse;
 	width: 100%;
-	margin: 1em 0;
-	table-layout: fixed;
-	/* @media screen and (min-width: 800px) {
-		table-layout: auto;
-	} */
+	table-layout: auto;
+
+	@media screen and (min-width) {
+		overflow: auto;
+		table-layout: fixed;
+	}
 `;
 
 export const Title = styled.caption`
 	color: ${({ theme }) => theme.colors.btn_screens};
 	font-weight: 600;
-	font-size: clamp(1.5rem, 5vw, 1.75rem);
+	font-size: clamp(1.25rem, 5vw, 1.65rem);
 	margin-bottom: 1em;
 `;
 
-export const Header = styled.thead``;
+export const Header = styled.thead`
+	@media screen and (max-width: 799px) {
+		border: none;
+		clip: rect(0 0 0 0);
+		height: 1px;
+		margin: -1px;
+		overflow: hidden;
+		padding: 0;
+		position: absolute;
+		width: 1px;
+	}
+`;
 
 export const Body = styled.tbody``;
 
@@ -42,7 +59,7 @@ export const Row = styled.tr`
 export const ColHeader = styled.th`
 	color: ${({ theme }) => theme.colors.txtCol_header};
 	font-weight: 800;
-	font-size: clamp(1.5rem, 5vw, 1.8rem);
+	font-size: clamp(1.25rem, 5vw, 1.45rem);
 	line-height: 2.2;
 	word-wrap: break-word;
 	text-align: left;
@@ -51,11 +68,24 @@ export const ColHeader = styled.th`
 
 export const ColBody = styled.td`
 	color: ${({ theme }) => theme.colors.txtRow_extend};
-	font-size: clamp(1.15rem, 5vw, 1.45rem);
+	font-size: clamp(1.15rem, 5vw, 1.35rem);
 	word-wrap: break-word;
 	text-align: left;
 	vertical-align: center;
 	padding-right: 0.75em;
+
+	@media screen and (max-width: 799px) {
+		border-bottom: 1px solid #ddd;
+		display: block;
+		font-size: inherit;
+		text-align: right;
+		&::before {
+			content: attr(data-label);
+			float: left;
+			font-weight: bold;
+			text-transform: uppercase;
+		}
+	}
 `;
 
 export const Button = styled.button`
@@ -84,3 +114,7 @@ export const Group = styled.div``;
 export const Icon = styled.div``;
 
 export const Text = styled.p``;
+
+export const Select = styled.select``;
+
+export const Option = styled.option``;

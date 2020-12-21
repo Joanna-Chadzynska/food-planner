@@ -66,9 +66,15 @@ export const TableColHeader: React.FC<ColProps> = ({
 export const TableColBody: React.FC<ColProps> = ({
 	children,
 	dataIdCol,
+	dataLabel,
+	scope,
 	...restProps
 }) => (
-	<ColBody data-col={dataIdCol} {...restProps}>
+	<ColBody
+		scope={scope}
+		data-label={dataLabel}
+		data-col={dataIdCol}
+		{...restProps}>
 		{children}
 	</ColBody>
 );

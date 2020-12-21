@@ -53,4 +53,17 @@ export interface AddEditFormComposition {
 	Item: React.FC;
 	Text: React.FC;
 	Error: React.FC;
+	Select: React.FC<SelectProps>;
+	Option: React.FC<OptionProps>;
+}
+
+export interface SelectProps {
+	name?: string;
+	value?: number | undefined;
+	onChange?: (e: React.ChangeEvent<HTMLSelectElement>) => void;
+}
+
+export interface OptionProps {
+	key?: string | number | null | undefined;
+	optValue?: string | number | readonly string[] | undefined;
 }
