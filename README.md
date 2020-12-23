@@ -2,6 +2,15 @@
 
 To repozytorium jest poświęcone projektowi ScrumLab w wersji Reactowej.
 
+## Technologie i API
+
+- [ pexels api ](https://www.pexels.com/pl-pl/api/documentation/?language=javascript#photos)
+- styled components
+- redux toolkit
+- hooks
+- react router dom
+- react-transition-group
+
 ## Jak zacząć?
 
 Aby rozpocząć pracę nad projektem, należy:
@@ -103,3 +112,7 @@ Projekt ma następującą strukturę:
     │   ├── images              # Zdjęcia i obrazki
     │   └── index.js            # Główny plik projektu (nie zmieniamy go)
     └── README.md
+
+## todos
+
+- poprawić przeskakiwanie tabeli / zakładka pulpit - tabela z planami
