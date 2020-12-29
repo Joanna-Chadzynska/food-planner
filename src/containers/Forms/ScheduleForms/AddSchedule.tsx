@@ -8,9 +8,11 @@ import { useDispatch, useSelector } from 'react-redux';
 import validateScheduleForm from './../../../utils/validateScheduleForm';
 import { SelectTableForm } from './components';
 
-export interface AddScheduleProps {}
+export interface AddScheduleProps {
+	setShowModal: any;
+}
 
-const AddSchedule: React.SFC<AddScheduleProps> = () => {
+const AddSchedule: React.SFC<AddScheduleProps> = ({ setShowModal }) => {
 	const { schedule } = useSelector((state: RootState) => state.schedules);
 	const dispatch = useDispatch();
 	const client = useHttpClient();
@@ -35,10 +37,13 @@ const AddSchedule: React.SFC<AddScheduleProps> = () => {
 
 		if (Object.keys(errors).length === 0) {
 			console.log('dodano plan');
+			client.addSchedule(schedule);
+			window.location.reload();
+			setShowModal(false);
+		} else {
+			setErrors(errors);
 		}
 	};
-
-	console.log(errors);
 
 	return (
 		<AddEditForm onSubmit={handleSubmit}>
