@@ -145,8 +145,59 @@ export class HttpClient {
 	}
 
 	/**
-	 * Method get from API all shopping lists
+	 * Method post - add new schedule
 	 * @returns Schedule[]
+	 */
+
+	public async addSchedule(schedule: Schedule): Promise<Schedule> {
+		try {
+			const response = (
+				await this.request.post(this.SCHEDULES_ENDPOINT, schedule)
+			).data;
+			return response;
+		} catch (error) {
+			return error;
+		}
+	}
+
+	/**
+	 * Method delete - remove recipe
+	 * @returns Schedule[]
+	 */
+
+	public async removeSchedule(id: number): Promise<Schedule> {
+		try {
+			const response = (
+				await this.request.delete(`${this.SCHEDULES_ENDPOINT}${id}`)
+			).data;
+			return response;
+		} catch (error) {
+			return error;
+		}
+	}
+
+	/**
+	 * Method patch - update schedule
+	 * @returns Schedule[]
+	 */
+
+	public async updateSchedule(
+		id: number,
+		schedule: Schedule
+	): Promise<Schedule> {
+		try {
+			const response = (
+				await this.request.patch(`${this.SCHEDULES_ENDPOINT}${id}`, schedule)
+			).data;
+			return response;
+		} catch (error) {
+			return error;
+		}
+	}
+
+	/**
+	 * Method get from API all shopping lists
+	 * @returns ShoppingList[]
 	 */
 
 	public async getShoppingLists(): Promise<ShoppingList[]> {
