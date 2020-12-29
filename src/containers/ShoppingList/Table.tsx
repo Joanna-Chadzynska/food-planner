@@ -7,7 +7,7 @@ import ShoppingListItem from './ShoppingListItem';
 export interface TableProps {}
 
 const Table: React.SFC<TableProps> = () => {
-	const { loading, error, shoppingLists } = useSelector(
+	const { loading, shoppingLists } = useSelector(
 		(state: RootState) => state.shoppingLists
 	);
 	return (

@@ -7,9 +7,7 @@ import RecipeDetails from './Recipe';
 export interface TableProps {}
 
 const Table: React.SFC<TableProps> = () => {
-	const { recipes, error, loading } = useSelector(
-		(state: RootState) => state.recipes
-	);
+	const { recipes, loading } = useSelector((state: RootState) => state.recipes);
 
 	return (
 		<List.Table>

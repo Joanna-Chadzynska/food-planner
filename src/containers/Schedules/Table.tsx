@@ -7,7 +7,7 @@ import ScheduleDetails from './ScheduleDetails';
 export interface TableProps {}
 
 const Table: React.SFC<TableProps> = () => {
-	const { loading, error, schedules } = useSelector(
+	const { loading, schedules } = useSelector(
 		(state: RootState) => state.schedules
 	);
 	return (
