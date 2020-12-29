@@ -30,7 +30,9 @@ const AddingButtons: React.SFC<AddingButtonsProps> = () => {
 				color='success'
 				direction='column'
 				id='schedule'
-				onClick={() => handleModal(<AddSchedule />)}>
+				onClick={() =>
+					handleModal(<AddSchedule setShowModal={setShowModal} />)
+				}>
 				<DashboardButton.Icon>
 					<FontAwesomeIcon icon={['far', 'plus-square']} size='5x' />
 				</DashboardButton.Icon>
