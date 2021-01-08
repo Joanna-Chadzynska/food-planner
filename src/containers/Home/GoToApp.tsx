@@ -19,7 +19,7 @@ const GoToApp: React.SFC = () => {
 						? ROUTES.DASHBOARD_MAIN
 						: ROUTES.DASHBOARD
 				}>
-				Go to Dashboard
+				Przejdź
 			</Info.ButtonLink>
 		</Info>
 	);
