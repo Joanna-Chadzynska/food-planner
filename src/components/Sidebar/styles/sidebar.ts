@@ -9,7 +9,10 @@ export interface LinkProps {
 export const Container = styled.aside`
 	background-color: ${({ theme }) => theme.colors.sidebarNav};
 	color: #fff;
-	margin-top: clamp(60px, 5vw, 100px);
+	margin-top: clamp(60px, 10vw, 100px);
+
+	@media screen and (min-width: 470px) {
+	}
 	@media screen and (min-width: 800px) {
 		margin-top: 0;
 		height: 100%;
@@ -38,9 +41,6 @@ export const NavItem = styled(NavLink)<LinkProps>`
 	position: relative;
 	width: 100%;
 
-	&:first-of-type {
-		padding-top: 0.75em;
-	}
 	&:hover {
 		background-color: ${darken(0.04, '#5b605f')};
 

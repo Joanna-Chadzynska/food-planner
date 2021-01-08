@@ -119,6 +119,9 @@ export const GlobalStyle = createGlobalStyle`
 
 
         /* apply custom styles */
+    #root {
+        min-height: 100vh;
+    }
 
     html {
         font-size: ${({ theme }) => theme.fonts.size.base};
@@ -128,10 +131,9 @@ export const GlobalStyle = createGlobalStyle`
     	min-height: 100vh;
     	scroll-behavior: smooth;
     	text-rendering: optimizeSpeed;
-	    background-image: url('../assets//bg.png');
+	    /* background-image: url('../assets//bg.png'); */
 	    background-size: cover;
         font-family: ${({ theme }) => theme.fonts.family.openSans};
-        
     }
 
     /* Remove list styles on ul, ol elements with a class   attribute */
@@ -209,12 +211,17 @@ export const GlobalStyle = createGlobalStyle`
     .layout {
         display: grid;
         grid-template-columns: 1fr;
-        grid-template-rows: auto auto;
-        height: calc(100vh - 81px);
+        /* grid-template-rows: minmax(300px, 370px) auto; */
+        height: 100vh;
+
+        @media screen and (min-width: 470px) {
+            grid-template-rows: minmax(400px, auto) auto;
+        }
 
         @media screen and (min-width: 800px) {
             grid-template-columns: 250px auto;
             grid-template-rows: 1fr;
+            height: calc(100vh - 81px);
         }
     }
 
