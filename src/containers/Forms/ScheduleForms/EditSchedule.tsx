@@ -63,7 +63,7 @@ const EditSchedule: React.SFC<EditScheduleProps> = ({ setShowModal, id }) => {
 
 	return (
 		<AddEditForm onSubmit={handleSubmit}>
-			<AddEditForm.Header>Nowy plan</AddEditForm.Header>
+			<AddEditForm.Header>Edytuj plan</AddEditForm.Header>
 
 			<AddEditForm.Fieldset>
 				<AddEditForm.Label htmlFor='name'>Nazwa planu</AddEditForm.Label>

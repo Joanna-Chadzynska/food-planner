@@ -60,7 +60,7 @@ const EditRecipe: React.SFC<EditRecipeProps> = ({ id }) => {
 
 	return (
 		<AddEditForm onSubmit={handleSubmit}>
-			<AddEditForm.Header>Nowy przepis</AddEditForm.Header>
+			<AddEditForm.Header>Edytuj przepis</AddEditForm.Header>
 
 			<AddEditForm.Fieldset>
 				<AddEditForm.Label htmlFor='name'>Nazwa przepisu</AddEditForm.Label>

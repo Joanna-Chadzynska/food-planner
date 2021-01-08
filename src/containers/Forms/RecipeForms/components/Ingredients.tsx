@@ -60,7 +60,7 @@ const Ingredients: React.SFC<IngredientsProps> = () => {
 
 	return (
 		<AddEditForm.Group>
-			<AddEditForm.Subtitle>Instrukcje</AddEditForm.Subtitle>
+			<AddEditForm.Subtitle>Składniki</AddEditForm.Subtitle>
 			<AddEditForm.Fieldset hasButton={true}>
 				<AddEditForm.Input
 					id='step'
