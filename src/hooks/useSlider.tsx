@@ -1,5 +1,5 @@
 import { createClient, Photo } from 'pexels';
-import { useEffect, useState } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 
 const useSlider = (query: string) => {
 	const [index, setIndex] = useState(0);
@@ -9,10 +9,10 @@ const useSlider = (query: string) => {
 	const client = createClient(key);
 	const orientation = 'landscape';
 
-	const loadPhotos = async () => {
+	const loadPhotos = useCallback(async () => {
 		let resp = {};
 		await client.photos
-			.search({ query, orientation })
+			.search({ query, orientation, per_page: 5 })
 			.then((photos) => (resp = photos));
 
 		for (let [key, value] of Object.entries<any>(resp)) {
@@ -20,7 +20,7 @@ const useSlider = (query: string) => {
 				setPhotos(value);
 			}
 		}
-	};
+	}, [query]);
 
 	useEffect(() => {
 		loadPhotos();
@@ -54,17 +54,6 @@ const useSlider = (query: string) => {
 			setDirection('left');
 		}
 	};
-
-	// useEffect(() => {
-	// 	const interval = setInterval(() => {
-	// 		if (photos.length > 0) {
-	// 			setIndex((prev) => prev + 1);
-	// 		} else {
-	// 			console.log('no photos');
-	// 		}
-	// 	}, 3000);
-	// 	return () => clearInterval(interval);
-	// }, [photos.length]);
 
 	return {
 		index,
