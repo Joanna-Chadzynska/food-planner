@@ -34,6 +34,7 @@ const DashboardStartContainer: React.SFC<DashboardStartContainerProps> = () => {
 
 	const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
 		e.preventDefault();
+		if (user.name.length < 3) return;
 		if (!localStorage.getItem('user')) {
 			localStorage.setItem('user', JSON.stringify(user));
 			createNewUser();
