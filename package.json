@@ -1,6 +1,8 @@
 {
-	"name": "my-app",
+	"name": "food-planner",
 	"version": "0.1.0",
+	"author": "Joanna Chądzyńska",
+	"repository": "https://github.com/Joanna-Chadzynska/food-planner",
 	"private": true,
 	"dependencies": {
 		"@fortawesome/fontawesome-svg-core": "^1.2.32",
